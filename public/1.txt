@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Server: Tengine
+Date: Wed, 30 Aug 2017 03:29:57 GMT
+Content-Type: application/json; charset=UTF-8
+Content-Length: 1160
+Connection: keep-alive
+Vary: Accept-Encoding
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH
+Access-Control-Allow-Headers: X-Requested-With,X-Sequence,X-Ca-Key,X-Ca-Secret,X-Ca-Version,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-API-Key,X-Ca-Stage,X-Ca-Client-DeviceId,X-Ca-Client-AppId,X-Ca-Signature,X-Ca-Signature-Headers,X-Forwarded-For,X-Ca-Date,X-Ca-Request-Mode,Authorization,Content-Type,Accept,Accept-Ranges,Cache-Control,Range,Content-MD5
+Access-Control-Max-Age: 172800
+X-Ca-Request-Id: 0A2F9F80-1FCA-457F-ADA2-8B83F735F65E
+X-Powered-By: PHP/5.3.3
+X-Ca-Error-Message: OK
+
+{"status":"0","msg":"ok","result":{"number":"1202516745301","type":"yunda","list":[{"time":"2017-01-07 16:05:38","status":"湖南省炎陵县公司快件已被 已签收 签收"},{"time":"2017-01-07 16:02:43","status":"湖南省炎陵县公司快件已被 已签收 签收"},{"time":"2017-01-07 15:43:42","status":"湖南省炎陵县公司进行派件扫描；派送业务员：陈晓东；联系电话：18173377752"},{"time":"2017-01-06 18:26:08","status":"湖南长沙分拨中心从站点发出，本次转运目的地：湖南省炎陵县公司"},{"time":"2017-01-06 17:06:52","status":"湖南长沙分拨中心在分拨中心进行卸车扫描"},{"time":"2017-01-05 23:48:08","status":"浙江杭州分拨中心进行装车扫描，即将发往：湖南长沙分拨中心"},{"time":"2017-01-05 23:44:03","status":"浙江杭州分拨中心进行中转集包扫描，将发往：湖南长沙分拨中心"},{"time":"2017-01-05 23:35:40","status":"浙江杭州分拨中心在分拨中心进行称重扫描"},{"time":"2017-01-05 20:01:03","status":"浙江主城区公司杭州拱墅区祥符桥服务部进行揽件扫描"}],"deliverystatus":"3","issign":"1"}}

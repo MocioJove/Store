@@ -1,0 +1,375 @@
+﻿{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>素材火商城系统-欢迎注册会员</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="__CSS_PATH__/common_4.css" />
+    <link rel="stylesheet" href="__CSS_PATH__/loginregister_1.css" />
+    <link rel="stylesheet" href="__CSS_PATH__/valifrom_1.css" />
+</head>
+<style>
+.form-box .input-box {
+    overflow: visible;
+}
+</style>
+
+<body>
+    <div class="ny-header">
+        <div class="nb">
+            <div class="logo">
+                <a href="../index.html"><img src="__PICTURE_PATH__/logo_4.png" alt="" /></a> <span>&middot; 欢迎注册</span>
+            </div>
+            <div class="right">
+                <span>我已经注册，马上</span>
+                <a href="login.html" class="blue">登录 &gt;</a>
+            </div>
+        </div>
+    </div>
+    <div class="nb">
+        <div class="ny-body ny-register">
+            <div class="left">
+                <div class="form-box">
+                    <form action="" method="post">
+                        <div class="input-box input-box1 onfocusstyle user-word">
+                            <label for="username" class="icon-user"></label>
+                            <input type="text" name="username" id="username" value="" placeholder="用户名" maxlength="20" autocomplete="off" />
+                            <div class="Validform_checktip formtip">
+                                <span class="i-tip"><label>支持中文、字母、数字、“-”“_”的组合</label></span>
+                                <label id="gg"></label>
+                            </div>
+                        </div>
+                        <div class="input-box onfocusstyle position-input p-w">
+                            <label class="icon-phone" for="mobile"></label>
+                            <input type="text" id="mobile" placeholder="手机号码" maxlength="11" autocomplete="off" />
+                            <div class="Validform_checktip formtip">
+                                <span class=""><label></label></span>
+                                <label id="mobilegg"></label>
+                            </div>
+                        </div>
+                        <div class="input-box yzm-box  onfocusstyle y-w">
+                            <label class="icon-yzm" for="smscode"></label>
+                            <input type="button" class="hq-yzm" id="btnSendCode" value="获取验证码" />
+                            <input type="text" name="smscode" id="smscode" maxlength="8" value="" placeholder="请输入短信验证码" class="phoneyzm" disabled="disabled" onkeyup="onlyNum(this);" />
+                            <input type="hidden" name="yzm" id="yzm" />
+                            <div class="Validform_checktip formtip">
+                                <span class=""><label></label></span>
+                                <label id="resmscode"></label>
+                            </div>
+                        </div>
+                        <div class="input-box onfocusstyle  pass-w">
+                            <label class="icon-setpassw" for="password"></label>
+                            <input type="password" name="password" id="password" value="" placeholder="请输入密码" maxlength="20" min="8" autocomplete="off" />
+                            <div class="Validform_checktip formtip">
+                                <span class="i-tip"><i></i><label>建议使用字母、数字和符号两种及以上的组合，6-20个字符</label></span>
+                            </div>
+                        </div>
+                        <div class="input-box onfocusstyle position-input  pass-w2">
+                            <label class="icon-setpassw" for="repassword"></label>
+                            <input type="password" name="repassword" id="repassword" value="" placeholder="请再次输入密码" maxlength="20" />
+                            <div class="Validform_checktip formtip">
+                                <span class=""><i></i><label></label></span>
+                            </div>
+                        </div>
+                        <div class="check onfocusstyle" style="position: relative;">
+                            <input type="checkbox" nullmsg="请阅读并选择" name="agree" id="agree" value="1" />&nbsp;&nbsp;
+                            <label for="agree">我已阅读并同意</label>
+                            <a href="javascript:void(0);" class="blue" id="rule">《素材火商城系统用户协议》</a>
+                            <div class="Validform_checktip formtip" style="top: 0px;">
+                                <span class=""><i></i><label></label></span>
+                            </div>
+                        </div>
+                        <div class="input-box sub-box">
+                            <input type="button" id="register" value="注册" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+        <div class="ny-footer">
+            <div class="link">
+                <a href="/">首页</a> | <a href="/n-help.html">关于我们</a> | <a href="/n-help.html">联系我们</a> | <a href="/timespike.html">限时抢购</a> | <a href="/user.html">会员中心</a> | <a href="/n-help.html">帮助中心</a>
+            </div>
+            <div class="copyright">
+                <p>
+                    <p>Copy@2017 <a href="http://www.sucaihuo.com/" target="_blank">素材火电商系统</a> <a href="http://www.sucaihuo.com/" target="_blank">www.sucaihuo.com</a>&nbsp;All Rights Reserved 粤ICP备16042138号-1</p>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="pass-rule">
+        <div class="pass-rule-box">
+            <div class="rule-title">
+                <h3>用户协议</h3><a href="javascript:void(0);" class="btn-close"></a>
+                <div class="rule-nr">
+                    <h4 style="white-space:normal;margin:0px;padding:0px;color:#333333;font-size:14px;font-family:'Microsoft YaHei', 'Hiragino Sans GB';line-height:20px;background-color:#FFFFFF;">
+	素材火用户注册协议
+</h4>
+                    <p style="margin-top:0px;margin-bottom:0px;white-space:normal;padding:0px;color:#666666;font-family:'Microsoft YaHei', 'Hiragino Sans GB';font-size:14px;line-height:20px;background-color:#FFFFFF;">
+                        本协议是您与素材火网站（简称"本站"，网址：www.sucaihuo.com）所有者（以下简称为"素材火"）之间就素材火网站服务等相关事宜所订立的契约，请您仔细阅读本注册协议，您点击"同意并继续"按钮后，本协议即构成对双方有约束力的法律文件。
+                    </p>
+                    <h5 style="white-space:normal;margin:10px 0px;padding:0px;color:#333333;font-size:14px;font-family:'Microsoft YaHei', 'Hiragino Sans GB';line-height:20px;background-color:#FFFFFF;">
+	第1条 本站服务条款的确认和接纳
+</h5>
+                    <p style="margin-top:0px;margin-bottom:0px;white-space:normal;padding:0px;color:#666666;font-family:'Microsoft YaHei', 'Hiragino Sans GB';font-size:14px;line-height:20px;background-color:#FFFFFF;">
+                        <strong style="margin:0px;padding:0px;">1.1</strong>本站的各项电子服务的所有权和运作权归素材火所有。用户同意所有注册协议条款并完成注册程序，才能成为本站的正式用户。用户确认：本协议条款是处理双方权利义务的契约，始终有效，法律另有强制性规定或双方另有特别约定的，依其规定。
+                    </p>
+                    <p style="margin-top:0px;margin-bottom:0px;white-space:normal;padding:0px;color:#666666;font-family:'Microsoft YaHei', 'Hiragino Sans GB';font-size:14px;line-height:20px;background-color:#FFFFFF;">
+                        <strong style="margin:0px;padding:0px;">1.2</strong>用户点击同意本协议的，即视为用户确认自己具有享受本站服务、下单购物等相应的权利能力和行为能力，能够独立承担法律责任。
+                    </p>
+                    <p style="margin-top:0px;margin-bottom:0px;white-space:normal;padding:0px;color:#666666;font-family:'Microsoft YaHei', 'Hiragino Sans GB';font-size:14px;line-height:20px;background-color:#FFFFFF;">
+                        <strong style="margin:0px;padding:0px;">1.3</strong>如果您在18周岁以下，您只能在父母或监护人的监护参与下才能使用本站。
+                    </p>
+                    <p style="margin-top:0px;margin-bottom:0px;white-space:normal;padding:0px;color:#666666;font-family:'Microsoft YaHei', 'Hiragino Sans GB';font-size:14px;line-height:20px;background-color:#FFFFFF;">
+                        <strong style="margin:0px;padding:0px;">1.4</strong>素材火保留在中华人民共和国大陆地区法施行之法律允许的范围内独自决定拒绝服务、关闭用户账户、清除或编辑内容或取消订单的权利。
+                    </p>
+                    <h5 style="white-space:normal;margin:10px 0px;padding:0px;color:#333333;font-size:14px;font-family:'Microsoft YaHei', 'Hiragino Sans GB';line-height:20px;background-color:#FFFFFF;">
+	第2条 本站服务
+</h5>
+                    <p style="margin-top:0px;margin-bottom:0px;white-space:normal;padding:0px;color:#666666;font-family:'Microsoft YaHei', 'Hiragino Sans GB';font-size:14px;line-height:20px;background-color:#FFFFFF;">
+                        <strong style="margin:0px;padding:0px;">2.1</strong>素材火通过互联网依法为用户提供互联网信息等服务，用户在完全同意本协议及本站规定的情况下，方有权使用本站的相关服务。
+                    </p>
+                    <p style="margin-top:0px;margin-bottom:0px;white-space:normal;padding:0px;color:#666666;font-family:'Microsoft YaHei', 'Hiragino Sans GB';font-size:14px;line-height:20px;background-color:#FFFFFF;">
+                        <strong style="margin:0px;padding:0px;">2.2</strong>用户必须自行准备如下设备和承担如下开支：（1）上网设备，包括并不限于电脑或者其他上网终端、调制解调器及其他必备的上网装置；（2）上网开支，包括并不限于网络接入费、上网设备租用费、手机流量费等。
+                    </p>
+                    <h5 style="white-space:normal;margin:10px 0px;padding:0px;color:#333333;font-size:14px;font-family:'Microsoft YaHei', 'Hiragino Sans GB';line-height:20px;background-color:#FFFFFF;">
+	第3条 用户信息
+</h5>
+                    <p style="margin-top:0px;margin-bottom:0px;white-space:normal;padding:0px;color:#666666;font-family:'Microsoft YaHei', 'Hiragino Sans GB';font-size:14px;line-height:20px;background-color:#FFFFFF;">
+                        <strong style="margin:0px;padding:0px;">3.1</strong>用户应自行诚信向本站提供注册资料，用户同意其提供的注册资料真实、准确、完整、合法有效，用户注册资料如有变动的，应及时更新其注册资料。如果用户提供的注册资料不合法、不真实、不准确、不详尽的，用户需承担因此引起的相应责任及后果，并且素材火保留终止用户使用素材火各项服务的权利。
+                    </p>
+                    <p style="margin-top:0px;margin-bottom:0px;white-space:normal;padding:0px;color:#666666;font-family:'Microsoft YaHei', 'Hiragino Sans GB';font-size:14px;line-height:20px;background-color:#FFFFFF;">
+                        <strong style="margin:0px;padding:0px;">3.2</strong>用户在本站进行浏览、下单购物等活动时，涉及用户真实姓名/名称、通信地址、联系电话、电子邮箱等隐私信息的，本站将予以严格保密，除非得到用户的授权或法律另有规定，本站不会向外界披露用户隐私信息。
+                    </p>
+                    <div>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask"></div>
+    <script src="__JS_PATH__/jquery-1.9.1.min_4.js" type="text/javascript"></script>
+    <!-- <script src="__JS_PATH__/jQuery-1.11.3.min.js" type="text/javascript"></script> -->
+    <script src="__JS_PATH__/main_4.js" type="text/javascript"></script>
+    <script src="__JS_PATH__/users_1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    var return_url = '';
+    $(function() {
+        loadLayer();
+    });
+    $(function() {
+        $(".hezuo li:last-child").css("margin-right", 0);
+        var wait = 60;
+
+        function time(o) {
+            if (wait == 0) {
+                o.removeAttribute("disabled");
+                o.value = "获取验证码";
+                wait = 60;
+            } else {
+                o.setAttribute("disabled", true);
+                o.value = "重新发送(" + wait + ")";
+                wait--;
+                setTimeout(function() {
+                    time(o);
+                }, 1000)
+            }
+        }
+
+        $("#mobile").change(function() {
+            var mobile = $.trim($("#mobile").val());
+            if (mobile.length == 11 && is_mobile(mobile)) {
+                check_mobile(mobile, callback_check_mobile);
+
+                $("#smscode").attr("disabled", false).css({ "background-color": "#fff" });
+                $("#btnSendCode").attr("disabled", false).addClass("active");
+                document.getElementById("btnSendCode").onclick = function() {
+                    if (wait != 60) {
+                        msg("请" + wait + "秒后再试！");
+                        return;
+                    }
+                    if (mobile == '') {
+                        msg("请填写手机号码");
+                        return;
+                    }
+                    $("#smscode").val("");
+                    time(this);
+                    if (two) {
+                        //ajax验证码
+                        $.post("__STATIC_PATH__/code.php", { mobile: $('#mobile').val() }, function(res) {
+                            $('#yzm').val(res);
+                        });
+                    }
+
+                }
+            } else {
+                $("#smscode").attr("disabled", true);
+                //禁止输入
+                //$("#btnSendCode").attr("disabled", true).removeClass("active");
+            }
+        });
+
+        function callback_check_mobile(res) {
+            if (res.err && res.err != '') {
+                $("#mobile").siblings(".Validform_checktip").children().attr('class', "i-err").children("label").text(res.err);
+                $("#btnSendCode").attr("disabled", true).removeClass("active");
+                $("#smscode").attr("disabled", true);
+                return;
+            }
+        }
+
+        //密码设置强度 end
+        if ((navigator.userAgent.indexOf('MSIE') >= 0 && navigator.userAgent.indexOf('MSIE 10') == -1) && (navigator.userAgent.indexOf('Opera') < 0)) {
+            $(".user-word").append("<span>用户名</span>");
+            $(".p-w").append("<span>手机号码</span>");
+            $(".y-w").append("<span>短信验证码</span>");
+            $(".pass-w").append("<span>请设置密码</span>");
+            $(".pass-w2").append("<span>请输入密码</span>");
+            $("#mobile,.p-w>span").blur(function() {
+                $(".p-w>span").html($("#mobile").val() == "" ? "手机号码" : "");
+            });
+            $("#username,.user-word>span").blur(function() {
+                $(".user-word>span").html($("#username").val() == "" ? "用户名" : "");
+            });
+            $("#smscode,.y-w>span").blur(function() {
+                $(".y-w>span").html($("#smscode").val() == "" ? "短信验证码" : "");
+            });
+            $("#password,.pass-w>span").blur(function() {
+                $(".pass-w>span").html($("#password").val() == "" ? "请设置密码" : "");
+            });
+            $("#repassword,.pass-w2>span").blur(function() {
+                $(".pass-w2>span").html($("#repassword").val() == "" ? "请输入密码" : "");
+            });
+            $("#username,.user-word>span").focus(function() {
+                $(".user-word>span").html("");
+            });
+            $("#mobile,.p-w>span").focus(function() {
+                $(".p-w>span").html("");
+            });
+            $("#smscode,.y-w>span").focus(function() {
+                $(".y-w>span").html("");
+            });
+            $("#password,.pass-w>span").focus(function() {
+                $(".pass-w>span").html("");
+            });
+            $("#repassword,.pass-w2>span").focus(function() {
+                $(".pass-w2>span").html("");
+            });
+
+        }
+
+    });
+
+    $("#rule").click(function() {
+        $(".pass-rule").show();
+        $("#mask").css("height", $(window).outerHeight()).show();
+    });
+    $(".btn-close,#mask").click(function() {
+        $("#mask").hide();
+        $(".pass-rule").hide();
+    });
+    var one = null;
+    var two = null;
+    var three = null;
+    var four = null;
+    var five = null;
+    var six = null;
+    $('#username').blur(function() {
+        var nameone = /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{4,20}$/;
+        if (nameone.test($('#username').val())) {
+            //ajax检测用户是否存在
+            $.post("{:url('index/user/yes')}", { username: $(this).val() }, function(data) {
+                if (data.errcode) {
+                    $('#gg').css('color', 'red');
+                    $('#gg').html(data.info);
+                    one = false;
+                } else {
+                    $('#gg').css('color', 'green');
+                    $('#gg').html(data.info);
+                    one = true;
+                }
+            }, 'json');
+        } else {
+            one = false;
+        }
+
+    });
+
+    $('#mobile').blur(function() {
+        var mobileone = /^1[3|4|5|7|8][0-9]{9}$/;
+        if (mobileone.test($('#mobile').val())) {
+            $.post("{:url('index/user/mobile')}", { mobile: $(this).val() }, function(data) {
+                if (data.err) {
+                    $('#mobilegg').css('color', 'red');
+                    $('#mobilegg').html(data.info);
+                    two = false;
+                } else {
+                    $('#mobilegg').css('color', 'green');
+                    $('#mobilegg').html(data.info);
+                    two = true;
+                }
+            }, 'json');
+
+        } else {
+            two = false;
+        }
+    });
+    $('.phoneyzm').blur(function() {
+        // console.log($('#yzm').val());
+        $.post("{:url('index/user/yzm')}", { smscode: $('#smscode').val(), yzm: $('#yzm').val() }, function(data) {
+            if (data.err) {
+                $('#resmscode').css('color', 'green');
+                $('#resmscode').html(data.info);
+                three = true;
+            } else {
+                $('#resmscode').css('color', 'red');
+                $('#resmscode').html(data.info);
+                three = false;
+            }
+        }, 'json');
+    });
+
+    $('#password').blur(function() {
+        var chkpwd = /^[A-Za-z0-9]{6,20}$/;
+        if (chkpwd.test($(this).val())) {
+            four = true;
+        } else {
+            four = false;
+        }
+    });
+    $('#repassword').blur(function() {
+
+        if ($(this).val() == $('#password').val()) {
+            five = true;
+        } else {
+            five = false;
+        }
+    });
+
+    $('#agree').click(function() {
+        console.log($('#agree').val());
+        six = true;
+    });
+    $('#register').click(function() {
+        // if(one && two && three && four && five && six)
+        if (one && two && four && five && six) {
+            // alert(1);
+            $.post("{:url('index/user/register')}", { username: $('#username').val(), mobile: $('#mobile').val(), password: $('#password').val(), agree: $('#agree').val() }, function(data) {
+                if (data.err) {
+                    window.location.href = 'regsuc';
+                } else {
+                    window.location.href = 'regerr';
+                }
+            }, 'json');
+        }
+    });
+    </script>
+    <p style="display: none;"></p>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+﻿{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>我的收藏</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="__CSS_PATH__/iconfont1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/common1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/uc1.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!--头部-->
+    <div class="uc-header-bg">
+        <div class="uc-header wrapper">
+            <a class="logo" href="index"><img src="__PICTURE_PATH__/logo2.png" alt="" /></a>
+            <div class="back-home"><a href="tobe">申请成为商家</a></div>
+            <ul class="uc-nav">
+                <li><a href="index">首页</a></li>
+                <li class="toggle">
+                    <span class="label">账户设置<i class="iconfont"></i></span>
+                    <div class="toggle-cont">
+                        <a href="account">个人信息</a>
+                        <a href="safe">安全设置</a>
+                        <a href="address">收货地址</a>
+                    </div>
+                </li>
+                <!-- <li><a href="msg">消息中心</a></li> -->
+                {if null !== ($Request.session.username)}
+                <li>{$Request.session.username}</li>
+                <li><a href="logout">退出</a></li>
+                {/if}
+            </ul>
+            <div class="schbox">
+                <form action="">
+                    <input class="search-txt" type="text" />
+                    <button class="search-btn">搜索</button>
+                    <div class="suggest-box">
+                        <div class="item" data-title="上衣 短款 短袖">上衣 短款 短袖
+                            <div class="tags"><span>雪纺</span><span>蕾丝</span><span>一字领</span></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper uc-router">
+        <ul>
+            <li><a href="index">首页</a></li>
+            <li><span class="divider"></span></li>
+            <li><span>个人中心</span></li>
+        </ul>
+    </div>
+    <div class="wrapper">
+        <div class="uc-main clearfix">
+            <div class="uc-aside">
+                <div class="uc-menu">
+                    <div class="tit">订单中心</div>
+                    <ul class="sublist">
+                        <li><a href="order">我的订单</a></li>
+                        <li><a class="active" href="">我的收藏</a></li>
+                        <li><a href="footprint">浏览历史</a></li>
+                    </ul>
+                    <div class="tit">客户服务</div>
+                    <ul class="sublist">
+                        <li><a href="reorder">取消订单记录</a></li>
+                        <li><a href="refund">退款/退货</a></li>
+                    </ul>
+                    <div class="tit">账户中心</div>
+                    <ul class="sublist">
+                        <li><a href="account">账户信息</a></li>
+                        <li><a href="safe">账户安全</a></li>
+                        <li><a href="history">消费记录</a></li>
+                        <li><a href="address">收货地址</a></li>
+                    </ul>
+                    <div class="tit">消息中心</div>
+                    <ul class="sublist">
+                        <li><a href="evaluate">商品评价</a></li>
+                        <!-- <li><a href="msg">站内消息</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="uc-content">
+                <div class="uc-panel">
+                    <div class="uc-bigtit">我的收藏</div>
+                    <div class="uc-panel-bd">
+                        <div class="uc-tabs">
+                            <a class="item active" href="fav">我收藏的商品</a>
+                        </div>
+                        <table class="uc-table">
+                            <tr class="hd">
+                                <td widtd="360" class="align-left">
+                                    商品名称
+                                </td>
+                                <td width="100">价格</td>
+                                <td width="100">库存情况</td>
+                                <td width="120">操作</td>
+                            </tr>
+                            <!--  -->
+                            {if $goods_info != null} {foreach $goods_info as $value}
+                            <tr class="fav-goods">
+                                <td class="item">
+                                    <img src="{$value['photopath']}" alt="" /><span class="name"><a href="fourth?goods_id={$value['goods_id']}">{$value['goodsname']}</a></span>
+                                </td>
+                                <td><span class="text-theme fwb">{$value['price']}</span></td>
+                                {if $value['count'] > 0}
+                                <td>现货</td>
+                                {else}
+                                <td>缺货</td>
+                                {/if}
+                                <td>
+                                    <br /><a class="text-muted" href="nocollect?goods_id={$value['goods_id']}">取消收藏</a></td>
+                            </tr>
+                            {/foreach} {/if}
+                            
+                        </table>
+                        <div class="page" style="float: left;margin-left: 320px;">
+                            {$goods->render()}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--脚部-->
+    <div class="fatfooter">
+    </div>
+    <!--脚部-->
+</body>
+<script src="__JS_PATH__/jquery1.js"></script>
+<link rel="stylesheet" href="__CSS_PATH__/style1.css" />
+<script src="__JS_PATH__/icheck.min.js"></script>
+<script src="__JS_PATH__/global.js"></script>
+<script>
+$(function() {
+    $('.check input').iCheck({
+        checkboxClass: 'sty1-checkbox'
+    });
+});
+</script>
+
+</html>

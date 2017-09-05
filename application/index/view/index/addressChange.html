@@ -1,0 +1,253 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>收货地址</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="__CSS_PATH__/iconfont1.css" rel="stylesheet"/>
+    <link href="__CSS_PATH__/common1.css" rel="stylesheet"/>
+    <link href="__CSS_PATH__/uc1.css" rel="stylesheet"/>
+    <link href="__CSS_PATH__/city.css" rel="stylesheet"/>
+    <link href="__CSS_PATH__/laydate.css" rel="stylesheet"/>
+
+</head>
+<body>
+    <!--头部-->
+    
+    <div class="uc-header-bg">
+        <div class="uc-header wrapper">
+            <a class="logo" href="index"><img src="__PICTURE_PATH__/logo2.png" alt="" /></a>
+            <div class="back-home"><a href="tobe">申请成为商家</a></div>
+            <ul class="uc-nav">
+                <li><a href="index">首页</a></li>
+                <li class="toggle">
+                    <span class="label">账户设置<i class="iconfont"></i></span>
+                    <div class="toggle-cont">
+                        <a href="account">个人信息</a>
+                        <a href="safe">安全设置</a>
+                        <a href="address">收货地址</a>
+                    </div>
+                </li>
+                <!-- <li><a href="msg">消息中心</a></li> -->
+                {if null !== ($Request.session.username)}
+                <li>{$Request.session.username}</li>
+                <li><a href="logout">退出</a></li>
+                {/if}
+            </ul>
+            <div class="schbox">
+                <form action="">
+                    <input class="search-txt" type="text" />
+                    <button class="search-btn">搜索</button>
+                    <div class="suggest-box">
+                        <div class="item" data-title="上衣 短款 短袖">上衣 短款 短袖<div class="tags"><span>雪纺</span><span>蕾丝</span><span>一字领</span></div></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper uc-router">
+        <ul>
+            <li><a href="index">首页</a></li>
+            <li><span class="divider"></span></li>
+            <li><span>个人中心</span></li>
+        </ul>
+    </div>
+
+    <div class="wrapper">
+        <div class="uc-main clearfix">
+            <div class="uc-aside">
+                <div class="uc-menu">
+                    <div class="tit">订单中心</div>
+                    <ul class="sublist">
+                        <li><a href="order">我的订单</a></li>
+                        <li><a href="fav">我的收藏</a></li>
+                        <li><a href="footprint">浏览历史</a></li>
+                    </ul>
+                    <div class="tit">客户服务</div>
+                    <ul class="sublist">
+                        <li><a href="reorder">取消订单记录</a></li>
+                        <li><a href="refund">退款/退货</a></li>
+                    </ul>
+                    <div class="tit">账户中心</div>
+                    <ul class="sublist">
+                        <li><a href="account">账户信息</a></li>
+                        <li><a href="safe">账户安全</a></li>
+                        <li><a href="history">消费记录</a></li>
+                        <li><a href="address" class="active">收货地址</a></li>
+                    </ul>
+                    <div class="tit">消息中心</div>
+                    <ul class="sublist">
+                        <li><a href="evaluate">商品评价</a></li>
+                        <!-- <li><a href="msg">站内消息</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="uc-content">
+                <div class="uc-panel">
+                    <div class="uc-bigtit">收货地址</div>
+                    <div class="uc-panel-bd">
+                            <div class="address-list">
+                                <div class="col-userinfo" style="float: left;margin-left: 200px;margin-top: 50px;">
+                                <div class="control-group">
+                                    <div class="hd">所在地：</div>
+                                    <div class="bd">
+                                        
+                                        <input style="width: 300px;" type="text" id="address" class="area-danxuan ui-txtin" data-value="" placeholder="{$info['goodsaddrss']}" />&nbsp;&nbsp;&nbsp;<span id="add"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">收货人：</div>
+                                    <div class="bd"><input style="width: 300px;" class="ui-txtin" type="text" name=""  id="accept" placeholder="{$info['accept']}" />&nbsp;&nbsp;&nbsp;<span id="ace"></span></div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">详细地址：</div>
+                                    <div class="bd"><input style="width: 300px;" class="ui-txtin" type="text" id="addrinfo" name=""  placeholder="{$info['goodsaddrinfo']}" />&nbsp;&nbsp;&nbsp;<span id="inf"></span></div>
+                                </div>
+                                 <div id="container" style="width:390px; height:235px;float: left;margin-left: 0px;"></div>
+                                <div style="color: white">gg</div>
+
+                                <div class="control-group">
+                                    <div class="hd">电话：</div>
+                                    <div class="bd"><input style="width: 300px;" class="ui-txtin" type="text" name=""  id="mobile" placeholder="{$info['goodsmobile']}" />&nbsp;&nbsp;&nbsp;<span id="mob"></span></div>
+                                </div>
+                                
+                                <div class="control-submit-1" style="float: left;margin-left: 200px;">
+                                    <input class="ui-btn-theme submit" type="submit" value="修改" id="change-done" />
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--脚部-->
+    <div class="fatfooter">
+
+    </div>
+    <!--脚部-->
+</body>
+<script src="__JS_PATH__/jquery1.js"></script>
+<link rel="stylesheet" href="__CSS_PATH__/style1.css"/>
+<script src="__JS_PATH__/icheck.min.js"></script>
+<script src="__JS_PATH__/laydate.js"></script>
+<script src="__JS_PATH__/global.js"></script>
+<script type="text/javascript" src="__JS_PATH__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS_PATH__/City_data.js"></script>
+<script type="text/javascript" src="__JS_PATH__/areadata.js"></script>
+<script type="text/javascript" src="__JS_PATH__/auto_area.js"></script>
+<script>
+    $('.ico').click(function(){
+        $('.col-userinfo').css('display','block');
+    });
+    $('.edit').click(function(){
+        $('.col-userinfo').css('display','block');
+        $('.control-submit').css('display','none');
+        $('.control-submit-1').css('display','block');
+    });
+    var four = false;
+    var five = false;
+    var six = false;
+    var seven = false;
+
+   
+    $('#address').blur(function(){
+        if(!$(this).val())
+        {
+            $('#add').css('color','green');
+            $('#add').html('可以可以');
+            five = true;
+        }else{
+             $('#add').css('color','red');
+            $('#add').html('错了错了');
+            five = false;
+        }
+    });
+
+    $('#accept').blur(function(){
+    var nameone= /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{3}$/;
+    if(nameone.test($('#accept').val()))
+    {
+        $('#ace').css('color','green');
+        $('#ace').html('可以可以');
+        six = true;
+    
+    }else{
+        $('#ace').css('color','red');
+        $('#ace').html('不太对啊');
+        six = false;
+    }
+
+    });
+
+    $('#addrinfo').blur(function(){
+    var nametwo= /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{3}$/;
+    if(nametwo.test($('#addrinfo').val()))
+    {
+        $('#inf').css('color','green');
+        $('#inf').html('可以可以');
+        seven = true;
+    
+    }else{
+        $('#inf').css('color','red');
+        $('#inf').html('不太对啊');
+        seven = false;
+    }
+
+    });
+
+     $('#mobile').blur(function(){
+    var mobileone = /^1[3|4|5|7|8][0-9]{9}$/;
+    if(!mobileone.test($('#mobile').val()))
+    {
+        $('#mob').css('color','red');
+        $('#mob').html('手机格式不太对');
+        four = false;
+    }else{
+        $('#mob').css('color','green');
+        $('#mob').html('可以可以');
+        four = true;
+    }
+    });
+
+
+    $('#change-done').click(function(){
+    // if(four && five && six && seven)
+    // {
+    	var link = window.location.search;
+    	var goodsaddr_id = link.substring(link.lastIndexOf('=')+1, link.length); 
+    	// alert(goodsaddr_id);
+    	//将id传给ajax
+        $.post("{:url('index/goodsaddr/goodsaddrchg')}",{mobile:$('#mobile').val(),address:$('#address').val(),addrinfo:$('#addrinfo').val(),accept:$('#accept').val(),goodsaddr_id:goodsaddr_id},function(data){
+                if(data.err)
+                {
+                    window.location.href = 'goodsaddrchgsuc';
+                }else{
+                    window.location.href = 'goodsaddrchgerr';
+                }
+        },'json');
+    // }
+    // alert($('#address').val());
+    });
+
+</script>
+                                
+<script src="http://webapi.amap.com/maps?v=1.3&key=59adc23eedf98eb00607334ae14ef1a9"></script>
+<script type="text/javascript">
+    var map = new AMap.Map('container', {
+       center:[117.000923,36.675807],
+       zoom:11
+    });
+
+    AMap.plugin('AMap.ToolBar',function(){
+       var toolbar = new AMap.ToolBar();
+       map.addControl(toolbar)
+    })
+</script>
+</html>

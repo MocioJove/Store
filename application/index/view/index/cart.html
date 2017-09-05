@@ -1,0 +1,426 @@
+﻿<div class="cart-box">
+    <div class="nb">
+        <div class="cart-step">
+            <ul>
+                <li class="cart1"><i></i>购物车</li>
+                <li class="cart2 "><i></i>确认订单</li>
+                <li class="cart3"><i></i>付款</li>
+                <li class="cart4"><i></i>支付成功</li>
+            </ul>
+        </div>
+        <form>
+            <div class="cart-detail">
+                <div class="cart-thead">
+                    <div class="cart-th cart-one">
+                        <label>
+                            购物车
+                    </div>
+                    <div class="cart-th cart-two">
+                        商品信息
+                    </div>
+                    <div class="cart-th cart-three">
+                        单价（元）
+                    </div>
+                    <div class="cart-th cart-four">
+                        数量
+                    </div>
+                    <div class="cart-th cart-five">
+                        小计（元）
+                    </div>
+                    <div class="cart-th cart-six">
+                        操作
+                    </div>
+                </div>
+                {if null === ($Request.session.username)}
+                    {if isset($arrc)} {foreach $arrc as $value}
+                    <div class="cart-tbody" id="list">
+                        <div class="cart-tr it-selected" id="121" data-spec="">
+                            <div class="cart-td checksingle  cart-one">
+                                <input type="checkbox" name="chk_list" checked="checked" value="{$value['goods_id']}" />
+                            </div>
+                            <div class="cart-td pro-details  cart-two">
+                                <div class="pic-box">
+                                    <a href="/ciqNM-g.html" target="_blank"><img src="{$value['photopath']}" width="80" height="80" alt="商品图片未上传"/></a>
+                                </div>
+                                <div class="pro-describ">
+                                    <a href="fourth?goods_id={$value['goods_id']}" target="_blank" id="id">{$value['goodsname']}</a>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="cart-td  cart-three">
+                                ￥<b class="g-price" id="g-price">{$value['price']}</b>
+                            </div>
+                            <div class="cart-td  cart-four btn-add-reduce">
+                                <a class="reduce" href="javascript:void(0);" id="subnum">-</a>
+                                <input type="text" data-max="10" value="{$value['num']}" class="pro-number result" id="pro-number" maxlength="3" />
+                                <a class="add" href="javascript:void(0);" id="addnum">+</a>
+                            </div>
+                            <div class="cart-td orange-bold  cart-five">
+                                ￥<b class="subtotal">{$value['num']*$value['price']}</b>
+                            </div>
+                            <div class="cart-td  cart-six"><a href="collect?goods_id={$value['goods_id']}" class="addfav">加入收藏</a>
+                                <!-- <a href="javascript:void(0);" class="removeGoods">删除</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    {/foreach} {/if}
+                {elseif isset($info)}
+                    {foreach $info as $value}
+                    <div class="cart-tbody" id="list">
+                    <div class="cart-tr it-selected" id="121" data-spec="">
+                        <div class="cart-td checksingle  cart-one">
+                            <input type="checkbox" name="chk_list" checked="checked" value="{$value['goods_id']}" />
+                        </div>
+                        <div class="cart-td pro-details  cart-two">
+                            <div class="pic-box">
+                                <a href="/ciqNM-g.html" target="_blank"><img src="{$value['photo']}" width="80" height="80" alt="商品图片未上传"/></a>
+                            </div>
+                            <div class="pro-describ">
+                                <a href="fourth?goods_id={$value['goods_id']}" target="_blank" id="id">{$value['goodsname']}</a>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="cart-td  cart-three">
+                            ￥<b class="g-price" id="g-price">{$value['price']}</b>
+                        </div>
+                        <div class="cart-td  cart-four btn-add-reduce">
+                            <a class="reduce" href="javascript:void(0);" id="subnum">-</a>
+                            <input type="text" data-max="10" value="{$value['num']}" class="pro-number result" id="pro-number" maxlength="3" />
+                            <a class="add" href="javascript:void(0);" id="addnum">+</a>
+                        </div>
+                        <div class="cart-td orange-bold  cart-five">
+                            ￥<b class="subtotal">{$value['num']*$value['price']}</b>
+                        </div>
+                        <div class="cart-td  cart-six"><a href="collect?goods_id={$value['goods_id']}" class="addfav">加入收藏</a>
+                            <!-- <a href="javascript:void(0);" class="removeGoods">删除</a> -->
+                        </div>
+                    </div>
+                </div>
+                {/foreach}
+                {/if}
+            </div>
+            {if null != ($Request.session.username)}
+            <div class="add-deliver">
+            <div class="cart-title">
+                <h3><span>收货人信息</span></h3>
+            </div>
+            <div class="sh-address">
+                <div class="uc-panel-bd">
+                            <div class="ui-msg-info ui-msg-block">您已创建 {$count} 个收货地址，最多可创建 5 个</div>
+
+                            <div class="address-list">
+                            {if $add}
+                                <div class="col col-4">
+                                    <a class="item va-m-box ta-c add">
+                                        <div class="add-new">
+                                            <span class="ico"><i class="iconfont icon-tianjia"></i></span>
+                                            <div class="label">添加收货地址</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {/if}
+                            {foreach($addinfo as $value)}
+                                
+                                <div class="col col-4">
+                                    {if $value['set_default']}
+                                     <div class="item active">
+                                    {else}
+                                    <div class="item">
+                                    {/if}
+                                        <div class="action">
+                                            <div class="fl"><a class="edit" href="addressChange?goodsaddr_id={$value['goodsaddr_id']}">修改</a><a class="del" href="goodsadd_delsure?goodsaddr_id={$value['goodsaddr_id']}">删除</a>
+                                            
+                                            </div>
+                                            <div class="fr"><a class="setdft" href="goodsadd_defalult?goodsaddr_id={$value['goodsaddr_id']}">设为默认</a></div>
+
+                                        </div>
+                                        <div class="info">
+                                            <div class="info-item name ellipsis">{$value['goodsaddrss']}（{$value['accept']}）</div>
+                                            <div class="info-item address">{$value['goodsaddrinfo']}</div>
+                                            <div class="info-item tel ellipsis">{$value['goodsmobile']}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {/foreach}
+                                
+                                <div class="col-userinfo" style="float: left;margin-left: 200px;margin-top: 50px;display: none;">
+                                <div class="control-group">
+                                    <div class="hd">所在地：</div>
+                                    <div class="bd">
+                                        
+                                        <input style="width: 300px;" type="text" id="address" class="area-danxuan ui-txtin" data-value="" />&nbsp;&nbsp;&nbsp;<span id="add"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">收货人：</div>
+                                    <div class="bd"><input style="width: 300px;" class="ui-txtin" type="text" name=""  id="accept" value="" />&nbsp;&nbsp;&nbsp;<span id="ace"></span></div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">详细地址：</div>
+                                    <div class="bd"><input style="width: 300px;" class="ui-txtin" type="text" id="addrinfo" name=""  value="" />&nbsp;&nbsp;&nbsp;<span id="inf"></span></div>
+                                </div>
+                                 
+                                <div class="control-group">
+                                    <div class="hd">电话：</div>
+                                    <div class="bd"><input style="width: 300px;" class="ui-txtin" type="text" name=""  id="mobile" value="" />&nbsp;&nbsp;&nbsp;<span id="mob"></span></div>
+                                </div>
+                                <div class="control-submit" style="float: left;margin-left: 200px;">
+                                    <input class="ui-btn-theme submit" type="submit" value="添加" id="done" />
+                                </div>
+                                <div class="control-submit-1" style="float: left;margin-left: 200px;display: none;">
+                                    <input class="ui-btn-theme submit" type="submit" value="修改" id="change-done" />
+                                </div>
+                            </div>
+
+                    </div>
+            </div>
+        </div>
+        {/if}
+            <div class="account">
+                <div class="left">
+                    <div class="check-all">
+                        <input type="checkbox" onclick="checkall(this,'#list');" class="btn-checkall" />&nbsp;全选
+                    </div>
+                     {if null == ($Request.session.username)}
+                        <a href="javascript:delcart();">删除选中商品</a>
+                    {else}
+                        <a href="javascript:cartdel();">删除选中商品</a>
+                    {/if}
+                </div>
+                <div class="right">
+                    <div class="r-lside">
+                        <div class="yunfei">
+                            <p class="yixuan">已选商品<span class="orange-bold" id="selectnum">0</span>件</p>
+                            <p>总价：<span class="orange-bold big">￥<b id="total">0</b></span></p>
+                        </div>
+                    </div>
+                    <div class="r-rside">
+                        <a href="javascript:void(0);" class="btn-jiesuan" onclick="pay()">提交订单</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="tab-pro-like" style="display: none;"></div>
+    </div>
+</div>
+<script src="__JS_PATH__/jQuery-1.11.3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+// $('#subnum').click(function() {
+//     var price = $('#g-price').val();
+//     console.log(price);
+//     var number = parseInt($('#pro-number').val()) - 1;
+//     if (number > 1 && number < 10) {
+//         $('.subtotal').html(price);
+
+//     }
+// });
+// $('#addnum').click(function() {
+//     var price = parseInt($('#g-price').val());
+//     var number = parseInt($('#pro-number').val()) + 1;
+//     if (number > 1 && number < 10) {
+//         $('.subtotal').html(price);
+
+//     }
+// });
+</script>
+<script src="__JS_PATH__/jquery-1.9.1.min_5.js" type="text/javascript"></script>
+<script src="__JS_PATH__/jquery.superslide.2.1.1_2.js" type="text/javascript"></script>
+<script src="__JS_PATH__/main_5.js" type="text/javascript"></script>
+<script src="__JS_PATH__/cart.js" type="text/javascript"></script>
+<script src="__JS_PATH__/jquery.cookie.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+    loadLayer();
+    $(".ul-pro-box li").each(function() {
+        if ($(this).index() % 3 == 2) {
+            $(this).css("margin-right", "0");
+        }
+    });
+    $(".slide-like-pro").slide({});
+
+    sumShopping();
+    setall(".btn-checkall", "#list");
+});
+
+function pay() {
+    var spCodesTemp = "";
+    $('input:checkbox[name=chk_list]:checked').each(function(i) {
+        if (0 == i) {
+            spCodesTemp = $(this).val();
+        } else {
+            spCodesTemp += ("," + $(this).val());
+        }
+    });
+    
+    var checknum = "";
+     $('.pro-number').each(function(i) {
+        if (0 == i) {
+            checknum = $(this).val();
+        } else {
+            checknum += ("," + $(this).val());
+        }
+    });
+     var money = $('#total').val();
+    // console.log(spCodesTemp);
+    if ($('#selectnum').html() > 0) {
+        $.post("{:url('index/goods/pay')}",{goods_id:spCodesTemp,number:checknum,money:money}, function(data) {
+            if(data.err)
+            {
+                window.location.href = 'pay';
+            }else{
+                alert(data.info);
+            }
+        }, 'json');
+    }
+}
+
+function delcart()
+{
+    var spCodesTemp = "";
+    $('input:checkbox[name=chk_list]:checked').each(function(i) {
+        if (0 == i) {
+            spCodesTemp = $(this).val();
+        } else {
+            spCodesTemp += ("," + $(this).val());
+        }
+    });
+     if ($('#selectnum').html() > 0) {
+        $.post("{:url('index/goods/delcart')}",{goods_id:spCodesTemp}, function(data) {
+            if(data.err)
+            {
+                history.go(0) 
+            }else{
+                alert('删除失败');
+            }
+        }, 'json');
+    }
+}
+function cartdel()
+{
+    var spCodesTemp = "";
+    $('input:checkbox[name=chk_list]:checked').each(function(i) {
+        if (0 == i) {
+            spCodesTemp = $(this).val();
+        } else {
+            spCodesTemp += ("," + $(this).val());
+        }
+    });
+     if ($('#selectnum').html() > 0) {
+        $.post("{:url('index/goods/cartdel')}",{goods_id:spCodesTemp}, function(data) {
+            if(data.err)
+            {
+                history.go(0) 
+            }else{
+                alert('删除失败');
+            }
+        }, 'json');
+    }
+}
+// $('.btn-checkall').click(function() {
+//     if ($(".btn-checkall:checkbox").prop("checked", true)) {
+//         $('chk_list:checkbox').prop("checked", true);
+//     } else {
+//         $('chk_list:checkbox').prop("checked", false);
+//     }
+// })
+</script>
+<script>
+    $('.ico').click(function(){
+        $('.col-userinfo').css('display','block');
+    });
+
+    var four = false;
+    var five = false;
+    var six = false;
+    var seven = false;
+   
+    $('#address').blur(function(){
+        if(!$(this).val())
+        {
+            $('#add').css('color','green');
+            $('#add').html('可以可以');
+            five = true;
+        }else{
+             $('#add').css('color','red');
+            $('#add').html('错了错了');
+            five = false;
+        }
+    });
+
+    $('#accept').blur(function(){
+    var nameone= /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{3}$/;
+    if(nameone.test($('#accept').val()))
+    {
+        $('#ace').css('color','green');
+        $('#ace').html('可以可以');
+        six = true;
+    
+    }else{
+        $('#ace').css('color','red');
+        $('#ace').html('不太对啊');
+        six = false;
+    }
+
+    });
+
+    $('#addrinfo').blur(function(){
+    var nametwo= /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{3}$/;
+    if(nametwo.test($('#addrinfo').val()))
+    {
+        $('#inf').css('color','green');
+        $('#inf').html('可以可以');
+        seven = true;
+    
+    }else{
+        $('#inf').css('color','red');
+        $('#inf').html('不太对啊');
+        seven = false;
+    }
+
+    });
+
+     $('#mobile').blur(function(){
+    var mobileone = /^1[3|4|5|7|8][0-9]{9}$/;
+    if(!mobileone.test($('#mobile').val()))
+    {
+        $('#mob').css('color','red');
+        $('#mob').html('手机格式不太对');
+        four = false;
+    }else{
+        $('#mob').css('color','green');
+        $('#mob').html('可以可以');
+        four = true;
+    }
+    });
+
+    $('#done').click(function(){
+    if(four && five && six && seven)
+    {
+        $.post("{:url('index/goodsaddr/goodsaddr')}",{mobile:$('#mobile').val(),address:$('#address').val(),addrinfo:$('#addrinfo').val(),accept:$('#accept').val()},function(data){
+                if(data.err)
+                {
+                    window.location.href = 'goodsaddrsuc';
+                }else{
+                    window.location.href = 'goodsaddrerr';
+                }
+        },'json');
+    }
+    // alert($('#address').val());
+    });
+
+    $('#change-done').click(function(){
+    if(four && five && six)
+    {
+        $.post("{:url('index/goodsaddr/goodsaddrchg')}",{mobile:$('#mobile').val(),address:$('#address').val(),addrinfo:$('#addrinfo').val(),accept:$('#accept').val()},function(data){
+                if(data.err)
+                {
+                    window.location.href = 'goodsaddrchgsuc';
+                }else{
+                    window.location.href = 'goodsaddrchgerr';
+                }
+        },'json');
+    }
+    // alert($('#address').val());
+    });
+
+</script>

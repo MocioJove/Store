@@ -1,0 +1,145 @@
+﻿{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>我的足迹</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="__CSS_PATH__/iconfont1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/common1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/uc1.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!--头部-->
+    <div class="uc-header-bg">
+        <div class="uc-header wrapper">
+            <a class="logo" href="index"><img src="__PICTURE_PATH__/logo2.png" alt="" /></a>
+            <div class="back-home"><a href="tobe">申请成为商家</a></div>
+            <ul class="uc-nav">
+                <li><a href="index">首页</a></li>
+                <li class="toggle">
+                    <span class="label">账户设置<i class="iconfont"></i></span>
+                    <div class="toggle-cont">
+                        <a href="account">个人信息</a>
+                        <a href="safe">安全设置</a>
+                        <a href="address">收货地址</a>
+                    </div>
+                </li>
+                <!-- <li><a href="msg">消息中心</a></li> -->
+                {if null !== ($Request.session.username)}
+                <li>{$Request.session.username}</li>
+                <li><a href="logout">退出</a></li>
+                {/if}
+            </ul>
+            <div class="schbox">
+                <form action="">
+                    <input class="search-txt" type="text" />
+                    <button class="search-btn">搜索</button>
+                    <div class="suggest-box">
+                        <div class="item" data-title="上衣 短款 短袖">上衣 短款 短袖
+                            <div class="tags"><span>雪纺</span><span>蕾丝</span><span>一字领</span></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper uc-router">
+        <ul>
+            <li><a href="index">首页</a></li>
+            <li><span class="divider"></span></li>
+            <li><span>个人中心</span></li>
+        </ul>
+    </div>
+    <div class="wrapper">
+        <div class="uc-main clearfix">
+            <div class="uc-aside">
+                <div class="uc-menu">
+                    <div class="tit">订单中心</div>
+                    <ul class="sublist">
+                        <li><a href="order">我的订单</a></li>
+                        <li><a href="fav">我的收藏</a></li>
+                        <li><a href="footprint" class="active">浏览历史</a></li>
+                    </ul>
+                    <div class="tit">客户服务</div>
+                    <ul class="sublist">
+                        <li><a href="reorder">取消订单记录</a></li>
+                        <li><a href="refund">退款/退货</a></li>
+                    </ul>
+                    <div class="tit">账户中心</div>
+                    <ul class="sublist">
+                        <li><a href="account">账户信息</a></li>
+                        <li><a href="safe">账户安全</a></li>
+                        <li><a href="history">消费记录</a></li>
+                        <li><a href="address">收货地址</a></li>
+                    </ul>
+                    <div class="tit">消息中心</div>
+                    <ul class="sublist">
+                        <li><a href="evaluate">商品评价</a></li>
+                        <!-- <li><a href="msg">站内消息</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="uc-content">
+                <div class="uc-panel">
+                    <div class="uc-bigtit">我的足迹</div>
+                    <div class="uc-panel-bd">
+                        <div class="uc-bar mt10">
+                            <div class="fl">以下是您最近的商品浏览记录</div>
+                            <div class="fr">
+                                <label class="check">
+                                    <span class="ml10 mr10">清空历史</span></label><a href="footdel" class="del iconfont icon-shanchu"></a>
+                            </div>
+                        </div>
+                        <div class="footprint-box">
+                            <div class="footprint-item">
+                                <div class="f-goods-list clearfix">
+                                    {if null !== ($msg)} {foreach $msg as $value}
+                                    <div class="item">
+                                        <div class="f-info">
+                                            <span class="f-time">{$value['time']}</span>
+                                        </div>
+                                        <a href="delfoot?history_id={$value['history_id']}" class="g-del"><i class="iconfont icon-shanchu"></i></a>
+                                        <a href="fourth?goods_id={$value['goods_id']}"><img class="figure" src="{$value['photo']}" alt="" /></a>
+                                        <div class="cont">
+                                            <div class="name"><a href="">{$value['goodsname']}</a></div>
+                                            <div class="price">
+                                                <span class="n">￥{$value['price']}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/foreach} {/if}
+                                </div>
+                            </div>
+                            <div class="footprint-item end" style="float: left;margin-left: 320px;">
+                                <div class="nomore">{$pg->render()}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--脚部-->
+    <div class="fatfooter">
+    </div>
+    <!--脚部-->
+</body>
+<script src="__JS_PATH__/jquery1.js"></script>
+<link rel="stylesheet" href="__CSS_PATH__/style1.css" />
+<script src="__JS_PATH__/icheck.min.js"></script>
+<script src="__JS_PATH__/laydate.js"></script>
+<script src="__JS_PATH__/global.js"></script>
+<script>
+$('.check input').iCheck({
+    checkboxClass: 'sty1-checkbox'
+});
+</script>
+
+</html>

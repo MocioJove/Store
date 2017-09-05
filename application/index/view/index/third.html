@@ -1,0 +1,51 @@
+﻿<div class="navtitleright nb"><a href="{:url('index/index/index')}">首页</a> &gt; {if isset($class_first)}<a href="{:url('index/index/first')}?class_id={$class_first['class_id']}">{$class_first['classname']}</a>{/if} &gt; {if isset($classname_secend)}<a href="{:url('index/index/secend')}?class_id={$classname_secend['class_id']}">{$classname_secend['classname']}</a> {/if}&gt;{if isset($classname)} <a href="{:url('index/index/third')}?class_id={$classname['class_id']}">{$classname['classname']}</a>{/if}</div>
+<div class="indbody pro-style">
+    <div class="nb recom-box">
+        <div class="part-price-sort">
+            <ul class="pps">
+                <li class="readychoose">
+                    <div class="lside-name">已选择</div>
+                    <div class="rside-navtitle">{if isset($classname) && isset($classname_secend)}<a href="{:url('index/index/secend')}?class_id={$classname_secend['class_id']}" title="取消选择" style="margin-right:10px;">分类：
+                    <span>{$classname['classname']}<em>×</em></span></a> {/if}</div>
+                </li>
+                <li>
+                    <div class="lside-name">价格</div>
+                    <div class="rside-navtitle"><a href="" class="red">全部</a>
+                        <a href="/fX37Z.html?page=1"></a>
+                        <span class="setprice">
+     <input type="text" id="price-min" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"/> - <input type="text" id="price-max" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
+     <input type="button" id="btnprice" value="确定"/>
+ </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="lside-name">排序方式</div>
+                    <div class="rside-navtitle some-px">
+                        <a href="/fX37Z.html?sort=a1&page=1" class="red">默认</a>
+                        <a href="/fX37Z.html?sort=s1&page=1"><span>销量</span></a>
+                        <a href="/fX37Z.html?sort=p2&page=1"><span class="price">价格</span><b ></b></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ul class="yourlike clearovermartb nobottompad">
+            {if isset($goods)} {foreach $goods as $value}
+            <li>
+                <a href="fourth?goods_id={$value['goods_id']}" class="picbox">
+                    <img src="{$value['photopath']}" alt="{$value['goods_id']}" style="width: 191px;height: 191px;">
+               </a>
+                <div class="elli">
+                    <a href="{$value['goods_id']}">{$value['goodsname']}</a>
+                </div>
+                <a href="fourth?goods_id={$value['goods_id']}" class="price">￥<span>{$value['price']}</span></a>
+                <div class="probottom">
+                    {if null !== ($Request.session.username)}
+                    <a href="{:url('index/order/single_cart')}?goods_id={$value['goods_id']}" class="buy">加入购物车</a><i class="line"></i> {/if}
+                    <a href="fourth?goods_id={$value['goods_id']}" class="addcart">立即购买</a>
+                </div>
+            </li>
+            {/foreach} {/if}
+        </ul>
+        <div class="pages"></div>
+    </div>
+</div>

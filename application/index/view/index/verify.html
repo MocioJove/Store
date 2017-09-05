@@ -1,0 +1,183 @@
+﻿{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>账号安全</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="__CSS_PATH__/iconfont1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/common1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/uc1.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!--头部-->
+    <div class="uc-header-bg">
+        <div class="uc-header wrapper">
+            <a class="logo" href="index"><img src="__PICTURE_PATH__/logo2.png" alt="" /></a>
+            <div class="back-home"><a href="tobe">申请成为商家</a></div>
+            <ul class="uc-nav">
+                <li><a href="index">首页</a></li>
+                <li class="toggle">
+                    <span class="label">账户设置<i class="iconfont"></i></span>
+                    <div class="toggle-cont">
+                        <a href="account">个人信息</a>
+                        <a href="safe">安全设置</a>
+                        <a href="address">收货地址</a>
+                    </div>
+                </li>
+                <!-- <li><a href="msg">消息中心</a></li> -->
+                {if null !== ($Request.session.username)}
+                <li>{$Request.session.username}</li>
+                <li><a href="logout">退出</a></li>
+                {/if}
+            </ul>
+            <div class="schbox">
+                <form action="">
+                    <input class="search-txt" type="text" />
+                    <button class="search-btn">搜索</button>
+                    <div class="suggest-box">
+                        <div class="item" data-title="上衣 短款 短袖">上衣 短款 短袖
+                            <div class="tags"><span>雪纺</span><span>蕾丝</span><span>一字领</span></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper uc-router">
+        <ul>
+            <li><a href="index">首页</a></li>
+            <li><span class="divider"></span></li>
+            <li><span>个人中心</span></li>
+        </ul>
+    </div>
+    <div class="wrapper">
+        <div class="uc-main clearfix">
+            <div class="uc-aside">
+                <div class="uc-menu">
+                    <div class="tit">订单中心</div>
+                    <ul class="sublist">
+                        <li><a href="order">我的订单</a></li>
+                        <li><a href="fav">我的收藏</a></li>
+                        <li><a href="footprint">浏览历史</a></li>
+                    </ul>
+                    <div class="tit">客户服务</div>
+                    <ul class="sublist">
+                        <li><a href="reorder">取消订单记录</a></li>
+                        <li><a href="refund">退款/退货</a></li>
+                    </ul>
+                    <div class="tit">账户中心</div>
+                    <ul class="sublist">
+                        <li><a href="account">账户信息</a></li>
+                        <li><a href="safe" class="active">账户安全</a></li>
+                        <li><a href="history">消费记录</a></li>
+                        <li><a href="address">收货地址</a></li>
+                    </ul>
+                    <div class="tit">消息中心</div>
+                    <ul class="sublist">
+                        <li><a href="evaluate">商品评价</a></li>
+                        <!-- <li><a href="msg">站内消息</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="uc-content">
+                <div class="uc-panel">
+                    <div class="uc-bigtit bd-b">邮箱验证</div>
+                    <div class="uc-panel-bd">
+                        <div class="verify-step mt20">
+                            <div class="item item-f">
+                                <i></i>留下您的邮箱
+                            </div>
+                            <div class="item item-m">
+                                <i></i>可以在保证账号安全的同时
+                            </div>
+                            <div class="item item-l">
+                                方便接受重要通知
+                            </div>
+                        </div>
+                        <div class="verify-panel mt10">
+                            <div class="inner-box">
+                                <!-- <div class="control-group">
+                                    <div class="hd">请选择验证方式：</div>
+                                    <div class="bd"><select style="width: 200px;" name="" id="" class="ui-txtin"><option value="">手机验证</option></select></div>
+                                </div> -->
+                                <!-- <div class="control-group">
+                                    <div class="hd">已验证手机号码：</div>
+                                    <div class="bd">18*******47</div>
+                                </div> -->
+                                <div class="control-group" style="float: left;margin-top: 90px;">
+                                    <div class="hd" style="font-size: 17px;">邮箱地址：</div>
+                                    <div class="bd">
+                                        <input style="width: 230px;" class="ui-txtin" type="text" name="" />
+                                        <span id="gg"></span>
+                                    </div>
+                                    <div class="submit-group">
+                                        <span href="" class="ui-btn-theme uc-btn-md">发送激活邮件</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--脚部-->
+    <div class="fatfooter">
+    </div>
+    <!--脚部-->
+</body>
+<script src="__JS_PATH__/jquery1.js"></script>
+<link rel="stylesheet" href="__CSS_PATH__/style1.css" />
+<script src="__JS_PATH__/icheck.min.js"></script>
+<script src="__JS_PATH__/laydate.js"></script>
+<script src="__JS_PATH__/global.js"></script>
+<script type="text/javascript">
+var one = null;
+$('.ui-txtin').blur(function() {
+    var namethree = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+    if (namethree.test($('.ui-txtin').val())) {
+        $('#gg').css('color', 'green');
+        $('#gg').html('可以可以');
+        one = true;
+
+    } else {
+        $('#gg').css('color', 'red');
+        $('#gg').html('不太对啊');
+        one = false;
+    }
+
+});
+
+$('.uc-btn-md').click(function() {
+    if (one) {
+        $.post("{:url('index/user/email')}", { email: $('.ui-txtin').val() }, function(data) {
+            if (data.err) {
+                $.post("{:url('index/user/sendEmail')}", { username: data.username, email: $('.ui-txtin').val() }, function(data) {
+                    if (data.err) {
+                        $('#gg').css('color', 'green');
+                        $('#gg').html(data.info);
+                    } else {
+                        $('#gg').css('color', 'red');
+                        $('#gg').html(data.info);
+                    }
+                }, 'json');
+
+            } else {
+                $('#gg').css('color', 'red');
+                $('#gg').html('这邮箱没改啊');
+            }
+        }, 'json');
+    } else {
+        alert('邮箱格式不正确');
+    }
+});
+</script>
+
+</html>

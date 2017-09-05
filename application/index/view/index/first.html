@@ -1,0 +1,69 @@
+﻿<div class="navtitleright nb"><a href="index.html">首页</a> &gt; {if isset($classname)} <a href="first?class_id={$class_id}">{$classname}</a></div>{/if}
+<div class="indbody pro-style">
+    <div class="nb recom-box">
+        <div class="part-price-sort">
+            <ul class="pps">
+                <li class="readychoose">
+                    <div class="lside-name">已选择</div>
+                    <div class="rside-navtitle"><a href="{:url('index/index/index')}" title="取消选择" style="margin-right:10px;">分类：
+                    {if isset($classname)}
+                    <span>{$classname}<em>×</em></span></a></div>
+                    {/if}
+                </li>
+                <li>
+                    <div class="lside-name">分类</div>
+                    <div class="rside-navtitle">
+                        {if isset($secend_class)} {foreach $secend_class as $value}
+                        <a href="secend?class_id={$value['class_id']}">{$value['classname']}</a> {/foreach} {/if}
+                    </div>
+                </li>
+                <li>
+                    <div class="lside-name">价格</div>
+                    <div class="rside-navtitle"><a href="/17rec.html?page=1" class="red">全部</a>
+                        <a href="/17rec.html?pr=1000-1999%0D&page=1">1000-1999
+</a>
+                        <a href="/17rec.html?pr=2000-2999%0D&page=1">2000-2999
+</a>
+                        <a href="/17rec.html?pr=3000-3999%0D&page=1">3000-3999
+</a>
+                        <a href="/17rec.html?pr=10000%E4%BB%A5%E4%B8%8A&page=1">10000以上</a>
+                        <span class="setprice">
+     <input type="text" id="price-min" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"/> - <input type="text" id="price-max" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
+     <input type="button" id="btnprice" value="确定"/>
+ </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="lside-name">排序方式</div>
+                    <div class="rside-navtitle some-px">
+                        <a href="/17rec.html?sort=a1&page=1" class="red">默认</a>
+                        <a href="/17rec.html?sort=s1&page=1"><span>销量</span></a>
+                        <a href="/17rec.html?sort=p2&page=1"><span class="price">价格</span><b ></b></a>
+                    </div>
+                </li>
+            </ul>
+        </div> 
+        {if isset($goods)}
+        <ul class="yourlike clearovermartb nobottompad">
+            {foreach $goods as $value}
+            <li>
+                <a href="fourth?goods_id={$value['goods_id']}" class="picbox">
+                    <img src="{$value['photopath']}" alt="{$value['goodsname']}" style="width: 191px;height: 191px;">
+               </a>
+                <div class="elli">
+                    <a href="fourth?goods_id={$value['goods_id']}">{$value['goodsname']}</a>
+                </div>
+                <a href="fourth?goods_id={$value['goods_id']}" class="price">￥<span>{$value['price']}</span></a>
+                <div class="probottom">
+                {if null !== ($Request.session.username)}
+                    <a href="{:url('index/order/single_cart')}?goods_id={$value['goods_id']}" class="buy">加入购物车</a><i class="line"></i>
+                {/if}
+                    
+                    <a href="fourth?goods_id={$value['goods_id']}" class="addcart">立即购买</a>
+                </div>
+            </li>
+            {/foreach}
+        </ul>
+        {/if}
+    </div>
+</div>

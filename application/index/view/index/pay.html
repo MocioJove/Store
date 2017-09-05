@@ -1,0 +1,465 @@
+﻿<div class="cart-box">
+    <div class="nb">
+        <div class="cart-step">
+            <ul>
+                <li class="cart1"><i></i>购物车</li>
+                <li class="cart2 oncart2"><i></i>确认订单</li>
+                <li class="cart3"><i></i>付款</li>
+                <li class="cart4"><i></i>支付成功</li>
+            </ul>
+        </div>
+        <div class="goods-infor">
+            <div class="cart-title">
+                <h3><span>商品信息</span></h3>
+            </div>
+            <div class="goods-table">
+                <div class="goods-thead">
+                    <div class="col col1">
+                        商品
+                    </div>
+                    <div class="col col3">
+                        单价
+                    </div>
+                    <div class="col col4">
+                        数量
+                    </div>
+                    <div class="col col5">
+                        小计
+                    </div>
+                </div>
+                {if isset($info) && null !== ($Request.session.username)}
+                <div style="display: none;">{$j = $i = 0}</div>
+                {foreach $info as $value}
+                <div class="goods-tbody">
+                    <div class="goodinfor">
+                        <div class="col col1 goods-title-pic">
+                            <a href="fourth?goods_id={$value['goods_id']}"><img src="{$value['photo']}" width="60" height="60"/></a>
+                            <div class="goods-describ elli">
+                                <p><a href="fourth?goods_id={$value['goods_id']}">{$value['goodsname']}&nbsp;&nbsp;</a></p>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col col3 goods-price"> ￥{$value['price']} </div>
+                        <div class="col col4 good-num"> {$value['num']} </div>
+                        <div style="display: none;">{$i = $i + $value['num']}</div>
+                        <div class="col col5 orange-bold xiaoji"> ￥{$value['price']*$value['num']} </div>
+                        <div style="display: none;">{$j = $j + $value['price']*$value['num']}</div>
+                        <div style="display: none;" class="order_id">{$value['order_id']}</div>
+                    </div>
+                </div>
+                {/foreach}
+                {/if}
+            </div>
+        </div>
+        <div class="style-zhifu">
+            <div class="cart-title">
+                <h3><span>支付方式</span></h3>
+            </div>
+            
+            <div class="zhifu-box">
+                <ul class="zfb" id="paylist">
+                    <!-- <li>
+                        <i class="icon-check-zf"></i>
+                        <a href="javascript:void(0);" id="wxpay_native"><img src="__PICTURE_PATH__/wxpay_native.png" />微信扫码支付</a>
+                    </li>
+                    <li>
+                        <i class="icon-check-zf"></i>
+                        <a href="javascript:void(0);" id="alipay"><img src="__PICTURE_PATH__/alipay.png" />支付宝</a>
+                    </li>
+                    <li>
+                        <i class="icon-check-zf"></i>
+                        <a href="javascript:void(0);" id="unionpay"><img src="__PICTURE_PATH__/unionpay.png" />银联支付</a>
+                    </li> -->
+                    <li>
+                        <i class="icon-check-zf"></i>
+                        <a href="javascript:void(0);" id="alipay">账户余额</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="style-zhifu">
+            <div class="cart-title">
+                <h3><span>配送方式</span></h3>
+            </div>
+            <div class="zhifu-box">
+                <ul class="zfb" id="expresslist">
+                    <li><i class="icon-check-zf"></i><a href="javascript:void(0);" id="11">顺丰速递</a></li>
+                    <li><i class="icon-check-zf"></i><a href="javascript:void(0);" id="5">圆通快递</a></li>
+                    <li><i class="icon-check-zf"></i><a href="javascript:void(0);" id="3">中通快递</a></li>
+                    <li><i class="icon-check-zf"></i><a href="javascript:void(0);" id="12">百世汇通</a></li>
+                    <li><i class="icon-check-zf"></i><a href="javascript:void(0);" id="10">如风达快递</a></li>
+                    <li><i class="icon-check-zf"></i><a href="javascript:void(0);" id="9">天天快递</a></li>
+                    <li><i class="icon-check-zf"></i><a href="javascript:void(0);" id="7">EMS邮政</a></li>
+                    <li><i class="icon-check-zf"></i><a href="javascript:void(0);" id="6">韵达快运</a></li>
+                    <li><i class="icon-check-zf"></i><a href="javascript:void(0);" id="4">申通快递</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fare-result">
+            <div class="cart-title">
+                <h3><span>结算信息</span></h3></div>
+            <div class="result-box">
+                <ul>
+                    <li class="first">
+                        <div class="calu-box">
+                            <p class="slivergrey">{$i}<span><b class="orange-bold"></b> 件商品 总计：</span><span class="txtmoney">￥<div class="money">{$j}</div><b></b></span></p>
+                            <p class="slivergrey"><span>运费：</span><span class="txtmoney">￥<b id="expfee">0.00</b></span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="lside">
+                            <p class="save-passw"><span class="slivergrey">输入支付密码：</span>
+                                <input type="password" id="cbkpaypwd" />
+                            </p>
+                        </div>
+                        <div class="rside">
+                            <div class="lside">
+                                <p><span class="slivergrey">应付金额：</span><span class="orange-bold big">￥<b id="payAmount">{$j}</b></span></p>
+                                <p class="vivi-blue">提交订单后尽快支付，商品才不会被人抢走哦！</p>
+                            </div>
+                            <a href="javascript:void(0)" class="btn-jiesuan">支付订单</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<p style="display: none;"></p>
+<div class="celan-float">
+    <ul>
+        <li class="shop"><a href="/cart.html" title="购物车"></a></li>
+        <li class="coll"><a href="#">收藏夹</a></li>
+        <li class="ecode">
+            <a href="#">二维码</a>
+            <div class="ecode-box radius">
+                <img src="__PICTURE_PATH__/code.jpg" alt="" />
+            </div>
+        </li>
+        <li class="gossi"><a href="/chat.html" target="_blank">微信</a></li>
+        <li class="telnum">
+            <a href="#">电话号码</a>
+            <div class="tel-box radius"><span>0757-82917115</span></div>
+        </li>
+    </ul>
+</div>
+<div class="edit-address modbox">
+    <div class="edit-box">
+        <h3>新增配送信息<i class="close-modbox"></i></h3>
+        <div class="edit-form">
+            <ul>
+                <li>
+                    <label><i>*</i>收货人：</label>
+                    <input type="text" id="sh-name" maxlength="20" class="s-length" />
+                </li>
+                <li>
+                    <label><i>*</i>手机号码：</label>
+                    <input type="text" id="sh-phone" maxlength="11" class="s-length" />
+                </li>
+                <li>
+                    <label>固定电话：</label>
+                    <input type="text" id="sh-tel" maxlength="20" class="s-length" />
+                </li>
+                <li style="min-height: 25px;">
+                    <label style="width: 75px; float: left;"><i>*</i>所在地区：</label>
+                    <div class="deliver" style="float: left;">
+                        <div id="store-selector">
+                            <div class="text">
+                                <div title="请选择">- 请选择 -</div><b></b>
+                                <input type="hidden" id="district">
+                            </div>
+                            <div onclick="$('#store-selector').removeClass('hover')" class="close"></div>
+                        </div>
+                        <div id="store-prompt"><strong></strong></div>
+                    </div>
+                </li>
+                <li style="clear: both;">
+                    <label><i>*</i>详细地址：</label>
+                    <input type="text" id="sh-address" maxlength="30" class="l-length" />
+                </li>
+            </ul>
+            <div class="setting">
+                <input type="checkbox" value="1" id="isdefault" />&nbsp;&nbsp;设为默认地址
+            </div>
+            <input type="hidden" id="id" value="">
+            <button class="btn-save" id="saveconsignee" onclick="saveconsignee();">保存</button>
+        </div>
+    </div>
+</div>
+<div id="edit-paypwd" class="modbox">
+    <h3>设置支付密码<i class="close-modbox"></i></h3>
+    <div>
+        <p>
+            <label>手机：</label>
+            <input type="text" id="mobile" readonly="readonly" value="" style="width: 93px; border: none;">
+            <input type="button" value="发送验证码" id="sendcode" data-mobileid="mobile" class="btn" onclick="sendSms(this, 'sms_setpaypwd');" />
+        </p>
+        <p>
+            <label>手机验证码：</label>
+            <input type="text" value="" id="authcode" maxlength="8" class="input" onkeyup="onlyNum(this);" />
+        </p>
+        <p>
+            <label>设置支付密码：</label>
+            <input type="password" value="" id="paypwd" maxlength="16" class="input" /><span class="tip">限数字和字母，6到16个字符</span></p>
+        <p>
+            <label>再输支付密码：</label>
+            <input type="password" value="" id="repaypwd" maxlength="16" class="input" />
+        </p>
+        <a href="javascript:void(0);" onclick="editPaypwd();" class="btn" style="margin-left: 94px;margin-top: 20px">提交</a>
+    </div>
+</div>
+<div id="mask"></div>
+<input type="hidden" id="user_mobile" value="" />
+<link rel="stylesheet" href="css/location.css" />
+<script src="__JS_PATH__/jquery.superslide.2.1.1.js" type="text/javascript"></script>
+<script src="__JS_PATH__/cart.js" type="text/javascript"></script>
+<script src="__JS_PATH__/jQuery-1.11.3.min.js" type="text/javascript"></script>
+<script src="__JS_PATH__/location.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+var goods_amount = 0;
+var mostpoint = 50;
+var pointpay = 100;
+var is_invoice = 1;
+var is_paypwd = false;
+$(function() {
+    loadLayer();
+    $(".ul-pro-box li").each(function() {
+        if ($(this).index() % 3 == 2) {
+            $(this).css("margin-right", "0");
+        }
+    });
+    $(".slide-like-pro").slide({});
+});
+
+$("#loginmobile").change(function() {
+    var mobile = $.trim($(this).val());
+    if (is_mobile(mobile) == false) {
+        msg("请输入正确手机号码")
+        return;
+    }
+    check_mobile(mobile, callback_check_mobile);
+});
+
+function callback_check_mobile(res) {
+    if (res.err && res.err != '') //已注册
+    {
+        $("#btnSendCode").data("act", 'login');
+    } else {
+        $("#btnSendCode").data("act", 'reg');
+    }
+}
+
+$("#btnlogin").click(function() {
+    var mobile = $.trim($("#loginmobile").val()),
+        smscode = $.trim($("#smscode").val()),
+        act = $("#btnSendCode").data("act");
+
+    $.post("user_api.html", {
+            act: act,
+            authtype: 1, //短信验证
+            username: (act == 'reg' ? '' : mobile),
+            tel: mobile,
+            smscode: smscode,
+            password: '',
+            repassword: '',
+            agree: 1,
+            isOauth: 0,
+            authcode: '',
+            autologin: 1
+        },
+        function(data) {
+            if (data.err != '') {
+                msg(data.err);
+            } else {
+                msg("登陆成功");
+                setTimeout(function() {
+                    window.location.reload();
+                }, 1500)
+
+            }
+        }, "json");
+
+});
+
+//发送验证码
+$("#btnSendCode").click(function() {
+    sendSms($(this)[0], 'sms_' + $(this).data("act"));
+})
+
+$("#is_invoice a").click(function() {
+    if ($(this).attr("id") == "1") {
+        $("#invoiceinfo").slideDown(200);
+    } else {
+        $("#invoiceinfo").slideUp(100);
+    }
+});
+
+//抵用券
+$(".h3dy").click(function() {
+    $(this).find("i.icon-arrow").toggleClass("icon-down");
+    $(".youhui-box").slideToggle(500);
+});
+$(".useful li").each(function() {
+    $(this).click(function() {
+        $(this).toggleClass("checked").siblings().removeClass("checked");
+        inputdis();
+    });
+});
+
+//输入余额、积分
+$("#balance, #point").blur(function() {
+    inputdis();
+    calcTotal();
+});
+
+//选中使用余额
+$("#userbalance").click(function() {
+    inputdis();
+    calcTotal();
+    $("#balance").css("display", $(this).is(":checked") ? "inline-block" : "none");
+});
+
+//选中使用积分
+$("#userpoint").click(function() {
+    inputdis();
+    calcTotal();
+    $("#point").css("display", $(this).is(":checked") ? "inline-block" : "none");
+});
+
+//结算
+$(".btn-jiesuan").click(function(){
+    var spCodesTemp = "";
+    $('.order_id').each(function(i) {
+        if (0 == i) {
+            spCodesTemp = $(this).html();
+        } else {
+            spCodesTemp += ("," + $(this).html());
+        }
+    });
+
+    $.post("{:url('index/index/paypwd')}",{order_id:spCodesTemp,money:$('.money').html()},function(data){
+        if(data.err)
+        {
+            window.location.href = 'order';
+            // alert('支付成功');
+        }else{
+            alert('没钱啦~');
+        }
+    },'json');
+})
+
+function inputdis() {
+    if (($.trim($("#balance").val()) != '' && $("#userbalance").is(":checked")) || ($.trim($("#point").val()) != '' && $("#userpoint").is(":checked")) || $(".useful li").hasClass("checked")) {
+        $(".result-box .lside .save-passw").show();
+        is_paypwd = true;
+    } else {
+        $(".result-box .lside .save-passw").hide();
+        is_paypwd = false;
+    }
+}
+</script>
+<script>
+$('.ico').click(function() {
+    $('.col-userinfo').css('display', 'block');
+});
+
+var four = false;
+var five = false;
+var six = false;
+var seven = false;
+
+$('#address').blur(function() {
+    if (!$(this).val()) {
+        $('#add').css('color', 'green');
+        $('#add').html('可以可以');
+        five = true;
+    } else {
+        $('#add').css('color', 'red');
+        $('#add').html('错了错了');
+        five = false;
+    }
+});
+
+$('#accept').blur(function() {
+    var nameone = /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{3}$/;
+    if (nameone.test($('#accept').val())) {
+        $('#ace').css('color', 'green');
+        $('#ace').html('可以可以');
+        six = true;
+
+    } else {
+        $('#ace').css('color', 'red');
+        $('#ace').html('不太对啊');
+        six = false;
+    }
+
+});
+
+$('#addrinfo').blur(function() {
+    var nametwo = /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{3}$/;
+    if (nametwo.test($('#addrinfo').val())) {
+        $('#inf').css('color', 'green');
+        $('#inf').html('可以可以');
+        seven = true;
+
+    } else {
+        $('#inf').css('color', 'red');
+        $('#inf').html('不太对啊');
+        seven = false;
+    }
+
+});
+
+$('#mobile').blur(function() {
+    var mobileone = /^1[3|4|5|7|8][0-9]{9}$/;
+    if (!mobileone.test($('#mobile').val())) {
+        $('#mob').css('color', 'red');
+        $('#mob').html('手机格式不太对');
+        four = false;
+    } else {
+        $('#mob').css('color', 'green');
+        $('#mob').html('可以可以');
+        four = true;
+    }
+});
+
+$('#done').click(function() {
+    if (four && five && six && seven) {
+        $.post("{:url('index/goodsaddr/goodsaddr')}", { mobile: $('#mobile').val(), address: $('#address').val(), addrinfo: $('#addrinfo').val(), accept: $('#accept').val() }, function(data) {
+            if (data.err) {
+                window.location.href = 'goodsaddrsuc';
+            } else {
+                window.location.href = 'goodsaddrerr';
+            }
+        }, 'json');
+    }
+    // alert($('#address').val());
+});
+
+$('#change-done').click(function() {
+    if (four && five && six) {
+        $.post("{:url('index/goodsaddr/goodsaddrchg')}", { mobile: $('#mobile').val(), address: $('#address').val(), addrinfo: $('#addrinfo').val(), accept: $('#accept').val() }, function(data) {
+            if (data.err) {
+                window.location.href = 'goodsaddrchgsuc';
+            } else {
+                window.location.href = 'goodsaddrchgerr';
+            }
+        }, 'json');
+    }
+    // alert($('#address').val());
+});
+
+var spCodesTemp = "";
+    $('input:checkbox[name=chk_list]:checked').each(function(i) {
+        if (0 == i) {
+            spCodesTemp = $(this).val();
+        } else {
+            spCodesTemp += ("," + $(this).val());
+        }
+    });
+</script>
+</body>
+
+</html>

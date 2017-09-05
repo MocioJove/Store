@@ -1,0 +1,163 @@
+﻿{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>商城评价</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="__CSS_PATH__/iconfont1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/common1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/uc1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/index.css" rel="stylesheet">
+    <!-- <link href="__CSS_PATH__/base.css" rel="stylesheet"> -->
+    <link href="__CSS_PATH__/share_style_32.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/media.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--头部-->
+    <div class="uc-header-bg">
+        <div class="uc-header wrapper">
+            <a class="logo" href="index"><img src="__PICTURE_PATH__/logo2.png" alt="" /></a>
+            <div class="back-home"><a href="tobe">申请成为商家</a></div>
+            <ul class="uc-nav">
+                <li><a href="index">首页</a></li>
+                <li class="toggle">
+                    <span class="label">账户设置<i class="iconfont"></i></span>
+                    <div class="toggle-cont">
+                        <a href="account">个人信息</a>
+                        <a href="safe">安全设置</a>
+                        <a href="address">收货地址</a>
+                    </div>
+                </li>
+                <!-- <li><a href="msg">消息中心</a></li> -->
+                {if null !== ($Request.session.username)}
+                <li>{$Request.session.username}</li>
+                <li><a href="logout">退出</a></li>
+                {/if}
+            </ul>
+            <div class="schbox">
+                <form action="">
+                    <input class="search-txt" type="text" />
+                    <button class="search-btn">搜索</button>
+                    <div class="suggest-box">
+                        <div class="item" data-title="上衣 短款 短袖">上衣 短款 短袖
+                            <div class="tags"><span>雪纺</span><span>蕾丝</span><span>一字领</span></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper uc-router">
+        <ul>
+            <li><a href="index">首页</a></li>
+            <li><span class="divider"></span></li>
+            <li><span>个人中心</span></li>
+        </ul>
+    </div>
+    <div class="wrapper">
+        <div class="uc-main clearfix">
+            <div class="uc-aside">
+                <div class="uc-menu">
+                    <div class="tit">订单中心</div>
+                    <ul class="sublist">
+                        <li><a href="order">我的订单</a></li>
+                        <li><a href="fav">我的收藏</a></li>
+                        <li><a href="footprint">浏览历史</a></li>
+                    </ul>
+                    <div class="tit">客户服务</div>
+                    <ul class="sublist">
+                        <li><a href="reorder">取消订单记录</a></li>
+                        <li><a href="refund">退款/退货</a></li>
+                    </ul>
+                    <div class="tit">账户中心</div>
+                    <ul class="sublist">
+                        <li><a href="account">账户信息</a></li>
+                        <li><a href="safe">账户安全</a></li>
+                        <li><a href="history">消费记录</a></li>
+                        <li><a href="address">收货地址</a></li>
+                    </ul>
+                    <div class="tit">消息中心</div>
+                    <ul class="sublist">
+                        <li><a class="active" href="evaluate">商品评价</a></li>
+                        <!-- <li><a href="msg">站内消息</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="uc-content">
+                <div class="uc-panel">
+                    <div class="uc-bigtit">商品评价</div>
+                    <nav id="topnav">
+                        <a href="">您的评价是我们提高的标准</a>
+                    </nav>
+                    <div class="bdsharebuttonbox" data-bd-bind="1503580060811" style="float: right;margin-top: -57px;">
+                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                        <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                        <a href="#" class="bds_more" data-cmd="more"></a>
+                    </div>
+
+                    <div class="uc-panel-bd">
+                        <table class="evalute-table">
+                            <tr class="hd">
+                                <th width="360">
+                                    <div name="" class="ui-txtin" style="width:120px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;谨言慎行</div>
+                                    <div name="" class="ui-txtin ml10" style="width:120px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;千恩万谢</div>
+                                </th>
+                                <th>评价时间</th>
+                                <th>宝贝信息</th>
+                                <th class="align-center">操作</th>
+                            </tr>
+                            {if isset($info)} {foreach $info as $value}
+                            <tr class="item">
+                                <td>
+                                    {if $value['grade'] == 1}
+                                    <div class="cont good">{$value['title']}</div>
+                                    {elseif $value['grade'] == 2}
+                                    <div class="cont">{$value['title']}</div>
+                                    {elseif $value['grade'] == 3}
+                                    <div class="cont bad">{$value['title']}</div>
+                                    {/if}
+                                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{$value['comments']}]</div>
+                                </td>
+                                <td>[{$value['time']}] </td>
+                                <td><a href="fourth?good_id={$value['goods_id']}">{$value['goodsname']}</a>
+                                    <div class="text-theme">{$value['price']}元</div>
+                                    <img src="{$value['photo']}" style="width: 50px;height: 50px;float: right;margin-top: -50px;">
+                                </td>
+                                <td class="align-center"><a class="ui-btn-theme uc-btn-md" href="comments_del?comments_id={$value['comments_id']}">删除</a></td>
+                            </tr>
+                            {/foreach} {/if}
+                        </table>
+                        <div style="float: left;margin-left: 320px;">
+                            {$page->render()}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--脚部-->
+    <div class="fatfooter">
+    </div>
+    <!--脚部-->
+</body>
+<script src="__JS_PATTH__/jquery1.js"></script>
+<link rel="stylesheet" href="__CSS_PATH__/style1.css" />
+<script src="__JS_PATTH__/icheck.min.js"></script>
+<script src="__JS_PATTH__/global.js"></script>
+
+<script src="__JS_PATH__/laydate.js"></script>
+<script src="__JS_PATH__/silder.js"></script>
+<script>
+</script>
+
+</html>

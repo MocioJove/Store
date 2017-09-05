@@ -1,0 +1,311 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>删除收货地址</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="__CSS_PATH__/iconfont1.css" rel="stylesheet"/>
+    <link href="__CSS_PATH__/common1.css" rel="stylesheet"/>
+    <link href="__CSS_PATH__/uc1.css" rel="stylesheet"/>
+    <link href="__CSS_PATH__/city.css" rel="stylesheet"/>
+    <link href="__CSS_PATH__/laydate.css" rel="stylesheet"/>
+
+</head>
+<body onload="del()">
+    <!--头部-->
+    
+    <div class="uc-header-bg">
+        <div class="uc-header wrapper">
+            <a class="logo" href="index"><img src="__PICTURE_PATH__/logo2.png" alt="" /></a>
+            <div class="back-home"><a href="tobe">申请成为商家</a></div>
+            <ul class="uc-nav">
+                <li><a href="index">首页</a></li>
+                <li class="toggle">
+                    <span class="label">账户设置<i class="iconfont"></i></span>
+                    <div class="toggle-cont">
+                        <a href="account">个人信息</a>
+                        <a href="safe">安全设置</a>
+                        <a href="address">收货地址</a>
+                    </div>
+                </li>
+                <li><a href="msg">消息中心</a></li>
+                {if null !== ($Request.session.username)}
+                <li>{$Request.session.username}</li>
+                <li><a href="logout">退出</a></li>
+                {/if}
+            </ul>
+            <div class="schbox">
+                <form action="">
+                    <input class="search-txt" type="text" />
+                    <button class="search-btn">搜索</button>
+                    <div class="suggest-box">
+                        <div class="item" data-title="上衣 短款 短袖">上衣 短款 短袖<div class="tags"><span>雪纺</span><span>蕾丝</span><span>一字领</span></div></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper uc-router">
+        <ul>
+            <li><a href="index">首页</a></li>
+            <li><span class="divider"></span></li>
+            <li><span>个人中心</span></li>
+        </ul>
+    </div>
+
+    <div class="wrapper">
+        <div class="uc-main clearfix">
+            <div class="uc-aside">
+                <div class="uc-menu">
+                    <div class="tit">订单中心</div>
+                    <ul class="sublist">
+                        <li><a href="order">我的订单</a></li>
+                        <li><a href="fav">我的收藏</a></li>
+                        <li><a href="footprint">浏览历史</a></li>
+                    </ul>
+                    <div class="tit">客户服务</div>
+                    <ul class="sublist">
+                        <li><a href="reorder">取消订单记录</a></li>
+                        <li><a href="refund">退款/退货</a></li>
+                    </ul>
+                    <div class="tit">账户中心</div>
+                    <ul class="sublist">
+                        <li><a href="account">账户信息</a></li>
+                        <li><a href="safe">账户安全</a></li>
+                        <li><a href="history">消费记录</a></li>
+                        <li><a href="address" class="active">收货地址</a></li>
+                    </ul>
+                    <div class="tit">消息中心</div>
+                    <ul class="sublist">
+                        <li><a href="evaluate">商品评价</a></li>
+                        <li><a href="msg">站内消息</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="uc-content">
+                <div class="uc-panel">
+                    <div class="uc-bigtit">收货地址</div>
+                    <div class="uc-panel-bd">
+                            <div class="ui-msg-info ui-msg-block">您已创建 {$count} 个收货地址，最多可创建 5 个</div>
+
+                            <div class="address-list">
+                            {if $add}
+                                <div class="col col-4">
+                                    <a class="item va-m-box ta-c add">
+                                        <div class="add-new">
+                                            <span class="ico"><i class="iconfont icon-tianjia"></i></span>
+                                            <div class="label">添加收货地址</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {/if}
+                            {foreach($info as $value)}
+                                <div class="col col-4">
+                                    <div class="item">
+                                        <div class="action">
+                                            <div class="fl"><a class="edit" href="addressChange?goodsaddr_id={$value['goodsaddr_id']}">修改</a><a class="del" href="?goodsaddr_id={$value['goodsaddr_id']}">删除</a>
+                                            
+                                            </div>
+                                            <div class="fr"><a class="setdft" href="javascript:;">设为默认</a></div>
+
+                                        </div>
+                                        <div class="info">
+                                            <div class="info-item name ellipsis">{$value['goodsaddrss']}（{$value['accept']}）</div>
+                                            <div class="info-item address">{$value['goodsaddrinfo']}</div>
+                                            <div class="info-item tel ellipsis">{$value['goodsmobile']}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {/foreach}
+                                <!-- <div class="col col-4">
+                                    <div class="item active">
+                                        <div class="action">
+                                            <div class="fl"><a class="edit" href="javascript:;">修改</a><a class="del" href="javascript:;">删除</a></div>
+                                            <div class="fr"><a class="setdft" href="javascript:;">设为默认</a></div>
+                                        </div>
+                                        <div class="info">
+                                            <div class="info-item name ellipsis">安徽合肥（小柚子 收）</div>
+                                            <div class="info-item address">瑶海区东方商城</div>
+                                            <div class="info-item tel ellipsis">13666666666</div>
+                                        </div>
+                                    </div>
+                                </div>
+ -->
+                                <div class="col-userinfo" style="float: left;margin-left: 200px;margin-top: 50px;display: none;">
+                                <div class="control-group">
+                                    <div class="hd">所在地：</div>
+                                    <div class="bd">
+                                        
+                                        <input style="width: 300px;" type="text" id="address" class="area-danxuan ui-txtin" data-value="" />&nbsp;&nbsp;&nbsp;<span id="add"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">收货人：</div>
+                                    <div class="bd"><input style="width: 300px;" class="ui-txtin" type="text" name=""  id="accept" value="" />&nbsp;&nbsp;&nbsp;<span id="ace"></span></div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">详细地址：</div>
+                                    <div class="bd"><input style="width: 300px;" class="ui-txtin" type="text" id="addrinfo" name=""  value="" />&nbsp;&nbsp;&nbsp;<span id="inf"></span></div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">电话：</div>
+                                    <div class="bd"><input style="width: 300px;" class="ui-txtin" type="text" name=""  id="mobile" value="" />&nbsp;&nbsp;&nbsp;<span id="mob"></span></div>
+                                </div>
+                                <div class="control-submit" style="float: left;margin-left: 200px;">
+                                    <input class="ui-btn-theme submit" type="submit" value="添加" id="done" />
+                                </div>
+                                <div class="control-submit-1" style="float: left;margin-left: 200px;display: none;">
+                                    <input class="ui-btn-theme submit" type="submit" value="修改" id="change-done" />
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--脚部-->
+    <div class="fatfooter">
+
+    </div>
+    <!--脚部-->
+</body>
+<script src="__JS_PATH__/jquery1.js"></script>
+<link rel="stylesheet" href="__CSS_PATH__/style1.css"/>
+<script src="__JS_PATH__/icheck.min.js"></script>
+<script src="__JS_PATH__/laydate.js"></script>
+<script src="__JS_PATH__/global.js"></script>
+<script type="text/javascript" src="__JS_PATH__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS_PATH__/City_data.js"></script>
+<script type="text/javascript" src="__JS_PATH__/areadata.js"></script>
+<script type="text/javascript" src="__JS_PATH__/auto_area.js"></script>
+<script>
+    $('.ico').click(function(){
+        $('.col-userinfo').css('display','block');
+    });
+
+    var four = false;
+    var five = false;
+    var six = false;
+    var seven = false;
+   
+    $('#address').blur(function(){
+        if(!$(this).val())
+        {
+            $('#add').css('color','green');
+            $('#add').html('可以可以');
+            five = true;
+        }else{
+             $('#add').css('color','red');
+            $('#add').html('错了错了');
+            five = false;
+        }
+    });
+
+    $('#accept').blur(function(){
+    var nameone= /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{3}$/;
+    if(nameone.test($('#accept').val()))
+    {
+        $('#ace').css('color','green');
+        $('#ace').html('可以可以');
+        six = true;
+    
+    }else{
+        $('#ace').css('color','red');
+        $('#ace').html('不太对啊');
+        six = false;
+    }
+
+    });
+
+    $('#addrinfo').blur(function(){
+    var nametwo= /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{3}$/;
+    if(nametwo.test($('#addrinfo').val()))
+    {
+        $('#inf').css('color','green');
+        $('#inf').html('可以可以');
+        seven = true;
+    
+    }else{
+        $('#inf').css('color','red');
+        $('#inf').html('不太对啊');
+        seven = false;
+    }
+
+    });
+
+     $('#mobile').blur(function(){
+    var mobileone = /^1[3|4|5|7|8][0-9]{9}$/;
+    if(!mobileone.test($('#mobile').val()))
+    {
+        $('#mob').css('color','red');
+        $('#mob').html('手机格式不太对');
+        four = false;
+    }else{
+        $('#mob').css('color','green');
+        $('#mob').html('可以可以');
+        four = true;
+    }
+    });
+
+    $('#done').click(function(){
+    if(four && five && six && seven)
+    {
+        $.post("{:url('index/goodsaddr/goodsaddr')}",{mobile:$('#mobile').val(),address:$('#address').val(),addrinfo:$('#addrinfo').val(),accept:$('#accept').val()},function(data){
+                if(data.err)
+                {
+                    window.location.href = 'goodsaddrsuc';
+                }else{
+                    window.location.href = 'goodsaddrerr';
+                }
+        },'json');
+    }
+    // alert($('#address').val());
+    });
+
+    $('#change-done').click(function(){
+    if(four && five && six)
+    {
+        $.post("{:url('index/goodsaddr/goodsaddrchg')}",{mobile:$('#mobile').val(),address:$('#address').val(),addrinfo:$('#addrinfo').val(),accept:$('#accept').val()},function(data){
+                if(data.err)
+                {
+                    window.location.href = 'goodsaddrchgsuc';
+                }else{
+                    window.location.href = 'goodsaddrchgerr';
+                }
+        },'json');
+    }
+    // alert($('#address').val());
+    });
+    function del()
+    {
+        // if(confirm('确定?'))
+        // {
+        //     alert(1);
+        // }
+        if(confirm('确定删除?'))
+        {
+            var link = window.location.search;
+            var goodsaddr_id = link.substring(link.lastIndexOf('=')+1, link.length); 
+            $.post("{:url('index/index/goodsaddrdel')}",{goodsaddr_id:goodsaddr_id},function(data){
+                    if(data.err)
+                    {
+                        window.location.href = 'goodsaddrdelsuc';
+                    }else{
+                        window.location.href = 'goodsaddrdelerr';
+                    }
+            },'json');
+            }else{
+
+        }
+    }
+   
+</script>
+</html>

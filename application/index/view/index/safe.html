@@ -1,0 +1,150 @@
+﻿{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>账号安全</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="__CSS_PATH__/iconfont1.css" rel="stylesheet"/>
+    <link href="__CSS_PATH__/common1.css" rel="stylesheet"/>
+    <link href="__CSS_PATH__/uc1.css" rel="stylesheet"/>
+</head>
+<body>
+    <!--头部-->
+    
+    <div class="uc-header-bg">
+        <div class="uc-header wrapper">
+            <a class="logo" href="index"><img src="__PICTURE_PATH__/logo2.png" alt="" /></a>
+            <div class="back-home"><a href="tobe">申请成为商家</a></div>
+            <ul class="uc-nav">
+                <li><a href="index">首页</a></li>
+                <li class="toggle">
+                    <span class="label">账户设置<i class="iconfont"></i></span>
+                    <div class="toggle-cont">
+                        <a href="account">个人信息</a>
+                        <a href="safe">安全设置</a>
+                        <a href="address">收货地址</a>
+                    </div>
+                </li>
+                <!-- <li><a href="msg">消息中心</a></li> -->
+                {if null !== ($Request.session.username)}
+                <li>{$Request.session.username}</li>
+                <li><a href="logout">退出</a></li>
+                {/if}
+            </ul>
+            <div class="schbox">
+                <form action="">
+                    <input class="search-txt" type="text" />
+                    <button class="search-btn">搜索</button>
+                    <div class="suggest-box">
+                        <div class="item" data-title="上衣 短款 短袖">上衣 短款 短袖<div class="tags"><span>雪纺</span><span>蕾丝</span><span>一字领</span></div></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper uc-router">
+        <ul>
+            <li><a href="index">首页</a></li>
+            <li><span class="divider"></span></li>
+            <li><span>个人中心</span></li>
+        </ul>
+    </div>
+
+    <div class="wrapper">
+        <div class="uc-main clearfix">
+            <div class="uc-aside">
+                <div class="uc-menu">
+                    <div class="tit">订单中心</div>
+                    <ul class="sublist">
+                        <li><a href="order">我的订单</a></li>
+                        <li><a href="fav">我的收藏</a></li>
+                        <li><a href="footprint">浏览历史</a></li>
+                    </ul>
+                    <div class="tit">客户服务</div>
+                    <ul class="sublist">
+                        <li><a href="reorder">取消订单记录</a></li>
+                        <li><a href="refund">退款/退货</a></li>
+                    </ul>
+                    <div class="tit">账户中心</div>
+                    <ul class="sublist">
+                        <li><a href="account">账户信息</a></li>
+                        <li><a href="safe" class="active">账户安全</a></li>
+                        <li><a href="history">消费记录</a></li>
+                        <li><a href="address">收货地址</a></li>
+                    </ul>
+                    <div class="tit">消息中心</div>
+                    <ul class="sublist">
+                        <li><a href="evaluate">商品评价</a></li>
+                        <!-- <li><a href="msg">站内消息</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="uc-content">
+                <div class="uc-panel">
+                    <div class="uc-bigtit bd-b">账号安全</div>
+                    <div class="uc-panel-bd">
+
+                        <div class="safe-list">
+                            <div class="list-item">
+                                <a href="findpwd" class="edit ui-btn-low ui-btn-hollow uc-btn-md">修改</a>
+                                <div class="cont">
+                                    <img src="__PICTURE_PATH__/pwd.jpg" class="ico" />
+                                    <div class="tit">帐号密码</div>
+                                    <div class="desc">用于保护帐号信息和登录安全</div>
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <a href="verify" class="edit ui-btn-low ui-btn-hollow uc-btn-md">修改</a>
+                                <div class="cont">
+                                    <img src="__PICTURE_PATH__/mail.jpg" class="ico" />
+                                    <div class="tit">安全邮箱 
+                                    {if null != $email['email']}
+                                    {$email['email']}
+                                    <span class="safe-status"><i class="iconfont icon-yanzheng text-success"></i>已绑定</span>
+                                    {/if}
+                                    </div>
+                                    <div class="desc">安全邮箱可以用于重置密码或其他安全验证</div>
+                                </div>
+                            </div>
+                            <!-- <div class="list-item">
+                                <a href="verify" class="edit ui-btn-low ui-btn-hollow uc-btn-md">修改</a>
+                                <div class="cont">
+                                    <img src="__PICTURE_PATH__/phone.jpg" class="ico" />
+                                    <div class="tit">安全手机<span class="safe-status"><i class="iconfont icon-warn text-danger"></i>未绑定</span></div>
+                                    <div class="desc">安全手机将可用于登录小米帐号和重置密码，建议立即设置</div>
+                                </div>
+                            </div> -->
+                           <!--  <div class="list-item">
+                                <a href="verify" class="edit ui-btn-low ui-btn-hollow uc-btn-md">修改</a>
+                                <div class="cont">
+                                    <img src="__PICTURE_PATH__/safe.jpg" class="ico" />
+                                    <div class="tit">密保问题<span class="safe-status"><i class="iconfont icon-yanzheng text-success"></i>已设置</span></div>
+                                    <div class="desc">密保问题用于安全验证，建议立即设置</div>
+                                </div>
+                            </div> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--脚部-->
+    <div class="fatfooter">
+
+    </div>
+    <!--脚部-->
+</body>
+<script src="__JS_PATH__/jquery1.js"></script>
+<link rel="stylesheet" href="__CSS_PATH__/style1.css"/>
+<script src="__JS_PATH__/icheck.min.js"></script>
+<script src="__JS_PATH__/laydate.js"></script>
+<script src="__JS_PATH__/global.js"></script>
+</html>

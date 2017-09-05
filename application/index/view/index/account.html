@@ -1,0 +1,448 @@
+﻿{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>账户信息</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="__CSS_PATH__/iconfont1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/common1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/uc1.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/city.css" rel="stylesheet" />
+    <link href="__CSS_PATH__/laydate.css" rel="stylesheet" />
+    <style type="text/css">
+    ._box {
+        width: 119px;
+        height: 37px;
+        background-color: #F34E4E;
+        background-image: url(images/bg.png);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-attachment: scroll;
+        line-height: 37px;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+    }
+
+    .up {
+        width: 119px;
+        height: 37px;
+        background-color: #F34E4E;
+        background-image: url(images/bg.png);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-attachment: scroll;
+        line-height: 37px;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+    }
+
+    .none {
+        width: 0px;
+        height: 0px;
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <!--头部-->
+    <div class="uc-header-bg">
+        <div class="uc-header wrapper">
+            <a class="logo" href="index"><img src="__PICTURE_PATH__/logo2.png" alt="" /></a>
+            <div class="back-home"><a href="tobe">申请成为商家</a></div>
+            <ul class="uc-nav">
+                <li><a href="index">首页</a></li>
+                <li class="toggle">
+                    <span class="label">账户设置<i class="iconfont"></i></span>
+                    <div class="toggle-cont">
+                        <a href="account">个人信息</a>
+                        <a href="safe">安全设置</a>
+                        <a href="address">收货地址</a>
+                    </div>
+                </li>
+                <!-- <li><a href="msg">消息中心</a></li> -->
+                {if null !== ($Request.session.username)}
+                <li>{$Request.session.username}</li>
+                <li><a href="logout">退出</a></li>
+                {/if}
+            </ul>
+            <div class="schbox">
+                <form action="">
+                    <input class="search-txt" type="text" />
+                    <button class="search-btn">搜索</button>
+                    <div class="suggest-box">
+                        <div class="item" data-title="上衣 短款 短袖">上衣 短款 短袖
+                            <div class="tags"><span>雪纺</span><span>蕾丝</span><span>一字领</span></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper uc-router">
+        <ul>
+            <li><a href="index">首页</a></li>
+            <li><span class="divider"></span></li>
+            <li><span>个人中心</span></li>
+        </ul>
+    </div>
+    <div class="wrapper">
+        <div class="uc-main clearfix">
+            <div class="uc-aside">
+                <div class="uc-menu">
+                    <div class="tit">订单中心</div>
+                    <ul class="sublist">
+                        <li><a href="order">我的订单</a></li>
+                        <li><a href="fav">我的收藏</a></li>
+                        <li><a href="footprint">浏览历史</a></li>
+                    </ul>
+                    <div class="tit">客户服务</div>
+                    <ul class="sublist">
+                        <li><a href="reorder">取消订单记录</a></li>
+                        <li><a href="refund">退货申请</a></li>
+                    </ul>
+                    <div class="tit">账户中心</div>
+                    <ul class="sublist">
+                        <li><a href="account" class="active">账户信息</a></li>
+                        <li><a href="safe">账户安全</a></li>
+                        <li><a href="history">消费记录</a></li>
+                        <li><a href="address">收货地址</a></li>
+                    </ul>
+                    <div class="tit">消息中心</div>
+                    <ul class="sublist">
+                        <li><a href="evaluate">商品评价</a></li>
+                        <!-- <li><a href="msg">站内消息</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="uc-content">
+                <div class="uc-panel">
+                    <div class="uc-bigtit">个人信息</div>
+                    <div class="uc-panel-bd">
+                        <div class="account-info clearfix">
+                            <div class="col-headpic">
+                                <div class="pic-wrap">
+                                    <div class="label">头像</div>
+                                    {if null !== ($Request.session.username)}
+                                    <div class="picbox">
+                                        <img src="{$headphoto}" alt="" style="width: 123px;height: 123px;" />
+                                    </div>
+                                    <form id="form1" runat="server" action="{:url('index/user/upload')}" method="post" enctype="multipart/form-data">
+                                        <div>
+                                            <div class="_box">选 择</div>
+                                            <br />
+                                            <div id="_box" style="display: none;" class="up">上 传</div>
+                                        </div>
+                                        <div class="none">
+                                            <input type="file" name="photo" id="edit" value="选 择" />
+                                            <input type="submit" id="upload" value="上 传" />
+                                        </div>
+                                    </form>
+                                    {else}
+                                    <div class="picbox">
+                                        <img src="__PICTURE_PATH__/loginhead.png" alt="" style="width: 123px;height: 123px;" />
+                                    </div>
+                                    {/if}
+                                </div>
+                            </div>
+                            <div class="col-userinfo">
+                                <div class="control-group">
+                                    <div class="hd">真实姓名：</div>
+                                    <div class="bd">
+                                        <input class="ui-txtin" type="text" name="" id="realname" value="{$realname}" />&nbsp;&nbsp;&nbsp;<span id="rea"></span></div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">昵称：</div>
+                                    <div class="bd">
+                                        <input class="ui-txtin" type="text" name="" id="nickname" value="{$nickname}" />&nbsp;&nbsp;&nbsp;<span id="nic"></span></div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">生日：</div>
+                                    <div class="bd">
+                                        <input class="ui-txtin demo2" type="text" name="" id="birthday" onClick="laydate({istime: false, format: 'YYYY-MM-DD'})" value="{$birthday}" />&nbsp;&nbsp;&nbsp;<span id="bir"></span></div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd" id="sex">性别：</div>
+                                    <div class="bd">
+                                        <label class="check">
+                                            <input type="radio" class="man" name="sex" />男</label>
+                                        <label class="check ml25">
+                                            <input type="radio" class="woman" name="sex" />女</label>
+                                        {if $sex !== null} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前：{$sex} {else} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前：未设置 {/if} &nbsp;&nbsp;&nbsp;
+                                        <span id="se"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">电话：</div>
+                                    <div class="bd">
+                                        <input class="ui-txtin" type="text" name="" id="mobile" value="{$mobile}" />&nbsp;&nbsp;&nbsp;<span id="mob"></span></div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">所在地：</div>
+                                    <div class="bd">
+                                        <input style="width: 100px;" type="text" id="address" class="area-danxuan ui-txtin" data-value="" value="{$address}" />&nbsp;&nbsp;&nbsp;<span id="add"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="hd">详细地址：</div>
+                                    <div class="bd">
+                                        <input class="ui-txtin" type="text" id="addrinfo" name="" value="{$addrinfo}" />&nbsp;&nbsp;&nbsp;<span id="inf"></span></div>
+                                </div>
+                                <div id="container" style="width:390px; height:235px;float: left;margin-left: 53px;"></div>
+                                <div style="color: white">ggggggggggggggggggggggggggggggggggggggggggggg</div>
+                                <div class="control-group">
+                                    <div class="hd">邮箱：</div>
+                                    <div class="bd">
+                                        <input class="ui-txtin" type="text" id="email" name="" value="{$email}" />&nbsp;&nbsp;&nbsp;<span id="ema"></span></div>
+                                </div>
+                                <div class="control-submit">
+                                    <input class="ui-btn-theme submit" type="submit" value="确认" id="done" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--脚部-->
+    <div class="fatfooter">
+    </div>
+    <!--脚部-->
+</body>
+<script src="__JS_PATH__/jquery1.js"></script>
+<link rel="stylesheet" href="__CSS_PATH__/style1.css" />
+<script src="__JS_PATH__/icheck.min.js"></script>
+<script src="__JS_PATH__/laydate.js"></script>
+<script src="__JS_PATH__/layer.js"></script>
+<script src="__JS_PATH__/global.js"></script>
+<script type="text/javascript" src="__JS_PATH__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS_PATH__/City_data.js"></script>
+<script type="text/javascript" src="__JS_PATH__/areadata.js"></script>
+<script type="text/javascript" src="__JS_PATH__/auto_area.js"></script>
+<script>
+$(function() {
+    $('.check').iCheck({
+        radioClass: 'sty2-radio'
+    });
+
+
+});
+</script>
+<script type="text/javascript">
+$("._box").click(function() {
+    $("#edit").click();
+    $('#_box').css('display', 'block');
+});
+$(".up").click(function() {
+    $("#upload").click();
+});
+
+var one = true;
+var two = true;
+var three = true;
+var four = true;
+var five = true;
+var six = true;
+var seven = true;
+var eight = true;
+$('#realname').blur(function() {
+    var nameone = /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{4,20}$/;
+    if (nameone.test($('#realname').val())) {
+        $('#rea').css('color', 'green');
+        $('#rea').html('可以可以');
+        one = true;
+
+    } else {
+        $('#rea').css('color', 'red');
+        $('#rea').html('不太对啊');
+        one = false;
+    }
+
+});
+
+$('#nickname').blur(function() {
+    var nameone = /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{4,20}$/;
+    if (nameone.test($('#nickname').val())) {
+        $('#nic').css('color', 'green');
+        $('#nic').html('可以可以');
+        two = true;
+
+    } else {
+        $('#nic').css('color', 'red');
+        $('#nic').html('不太对啊');
+        two = false;
+    }
+
+});
+
+// $('#birthday').blur(function(){
+//     if($(this).val() != '')
+//     {
+//         $('#bir').css('color','green');
+//         $('#bir').html('可以可以');
+//         three = true;
+//     }else{
+//          $('#bir').css('color','red');
+//         $('#bir').html('没写哦');
+//         three = true;
+//     }
+// });
+$('#sex').val('');
+$('.man').click(function() {
+    $('#sex').val('man');
+    $('#se').css('color', 'green');
+    $('#se').html('可以可以');
+});
+$('.woman').click(function() {
+    $('#sex').val('woman');
+    $('#se').css('color', 'green');
+    $('#se').html('可以可以');
+});
+
+$('#mobile').blur(function() {
+    var mobileone = /^1[3|4|5|7|8][0-9]{9}$/;
+    if (mobileone.test($('#mobile').val())) {
+        $.post("{:url('index/user/newMobile')}", { mobile: $(this).val() }, function(data) {
+            if (data.err) {
+                $('#mob').css('color', 'red');
+                $('#mob').html(data.info);
+                four = false;
+            } else {
+                $('#mob').css('color', 'green');
+                $('#mob').html(data.info);
+                four = true;
+            }
+        }, 'json');
+
+    } else {
+        four = false;
+    }
+});
+$('#email').blur(function() {
+            var namethree = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+            if (namethree.test($('#email').val())) {
+                $('#ema').css('color', 'green');
+                $('#ema').html('可以可以');
+                seven = true;
+
+            } else {
+                $('#ema').css('color', 'red');
+                $('#ema').html('不太对啊');
+                seven = false;
+            }
+
+        }); 
+</script>
+<script>
+! function() {
+    laydate.skin('molv'); //切换皮肤，请查看skins下面皮肤库
+    laydate({ elem: '#demo' }); //绑定元素
+}();
+//日期范围限制
+var start = {
+    elem: '#start',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(), //设定最小日期为当前日期
+    max: '2099-06-16', //最大日期
+    istime: true,
+    istoday: false,
+    choose: function(datas) {
+        end.min = datas; //开始日选好后，重置结束日的最小日期
+        end.start = datas //将结束日的初始值设定为开始日
+    }
+};
+var end = {
+    elem: '#end',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(),
+    max: '2099-06-16',
+    istime: true,
+    istoday: false,
+    choose: function(datas) {
+        start.max = datas; //结束日选好后，充值开始日的最大日期
+    }
+};
+laydate(start);
+laydate(end);
+//自定义日期格式
+laydate({
+    elem: '#test1',
+    format: 'YYYY年MM月DD日',
+    festival: true, //显示节日
+    choose: function(datas) { //选择日期完毕的回调
+        alert('得到：' + datas);
+    }
+});
+//日期范围限定在昨天到明天
+laydate({
+    elem: '#hello3',
+    min: laydate.now(-1), //-1代表昨天，-2代表前天，以此类推
+    max: laydate.now(+1) //+1代表明天，+2代表后天，以此类推
+});
+
+
+// $('#address').blur(function(){
+//     if(!$(this).val())
+//     {
+//         $('#add').css('color','green');
+//         $('#add').html('可以可以');
+//         five = true;
+//     }else{
+//          $('#add').css('color','red');
+//         $('#add').html('错了错了');
+//         five = false;
+//     }
+// });
+
+        $('#addrinfo').blur(function() {
+            var nametwo = /^[\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[A-Za-z0-9]{3}$/;
+            if (nametwo.test($('#addrinfo').val())) {
+                $('#inf').css('color', 'green');
+                $('#inf').html('可以可以');
+                six = true;
+
+            } else {
+                $('#inf').css('color', 'red');
+                $('#inf').html('不太对啊');
+                six = false;
+            }
+
+        });
+
+
+        $('#done').click(function() {
+            if (one && two && three && four && five && six && seven) {
+                $.post("{:url('index/user/changeinfo')}", { realname: $('#realname').val(), nickname: $('#nickname').val(), birthday: $('#birthday').val(), sex: $('#sex').val(), mobile: $('#mobile').val(), address: $('#address').val(), addrinfo: $('#addrinfo').val(), email: $('#email').val() }, function(data) {
+                    if (data.err) {
+                        window.location.href = 'changesuc';
+                    } else {
+                        window.location.href = 'changeerr';
+                    }
+                }, 'json');
+            }
+            // alert($('#address').val());
+        });
+</script>
+<script src="http://webapi.amap.com/maps?v=1.3&key=59adc23eedf98eb00607334ae14ef1a9"></script>
+<script type="text/javascript">
+var map = new AMap.Map('container', {
+    center: [117.000923, 36.675807],
+    zoom: 11
+});
+
+AMap.plugin('AMap.ToolBar', function() {
+    var toolbar = new AMap.ToolBar();
+    map.addControl(toolbar)
+})
+</script>
+
+</html>

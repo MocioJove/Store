@@ -1,0 +1,193 @@
+﻿<div class="nb">
+<div class="find-passw-box">
+<h3>找回密码</h3>
+<div class="jindu">
+<dl class="successdl"> 
+<dt class="success">1</dt>
+<dd>填写账户名</dd>
+</dl>
+<dl id="two"> <dt id="two1">2</dt>
+<dd>验证身份</dd>
+</dl>
+<dl id="three"> <dt id="three1">3</dt>
+<dd>设置新密码</dd>
+</dl>
+<dl id="four"> <dt id="four1">4</dt>
+<dd>完成</dd>
+</dl>
+</div>
+<form action="" method="post">
+<div class="findform-box">
+<ul id="first" style="display: block;">
+<li> <span class="label"><label for="fusername">账户名：</label></span> <input type="text" name="uname" id="uname" placeholder="用户名" />&nbsp;&nbsp;&nbsp;<span id="ckname"></span> <span class="check-infor"></span> </li>
+<li>
+<div class="fyzm-box"> <span class="label"><label for="checkcode"><span id="ckcode"></span>&nbsp;&nbsp;&nbsp;验证码：</label></span> <input type="text" name="checkcode" id="checkcode" value="" /> <span class="check-infor"></span> </div>
+<div class="fyzm-pic"> <img id="mx" style="cursor:pointer;" src="{:captcha_src()}" alt="captcha" border="1" onclick="this.src=this.src+'?'"> </div>
+
+</li>
+<div class="div-tj"> <input type="button" value="提交" id="btnfindpwd" class="btn"/> </div>
+</ul>
+
+<ul id="secend" style="display: none;">
+<li> <span class="label"><label for="fusername">手机号：</label></span> <input type="text" name="uname" id="uphone" placeholder="手机号码" /> <span class="check-infor"></span>&nbsp;&nbsp;&nbsp;<span id="ckphone" class="ckphone"></span> </li>
+<li>
+<div class="fyzm-box"> <span class="label"><label for="checkcode"><span id="ucode"></span>&nbsp;&nbsp;&nbsp;验证码：</label></span> <input type="text" name="checkcode" id="phcode" value="" /> <input type="hidden" id="yzm" /><span class="check-infor"></span> &nbsp;&nbsp;&nbsp;<span id="phonecode" class="ckphone"></span></div>
+</li>
+<div class="div-tj"> <input type="button" value="发送验证码" id="sendcode" class="btn"/> </div>
+<div class="div-tj"> <input type="button" value="提交" id="subcode" class="btn" style="display: none;" /> </div>
+</ul>
+
+<ul id="third" style="display: none;">
+<li> <span class="label"><label for="fusername">&nbsp;新密码：</label></span> <input type="password" name="uname" id="newpwd" placeholder="6-20个字符" /> <span class="check-infor"></span>&nbsp;&nbsp;&nbsp;<span id="ckpwd" class="ckphone"></span> </li>
+<li>
+<div class="fyzm-box"> <span class="label"><label for="checkcode"><span id="gg"></span>&nbsp;&nbsp;&nbsp;确认密码：</label></span> <input type="password" name="checkcode" id="repwd" value="" /> <input type="hidden" id="yzm" /><span class="check-infor"></span> &nbsp;&nbsp;&nbsp;<span id="ckrepwd" class="ckphone"></span></div>
+</li>
+<div class="div-tj"> <input type="button" value="提交" id="sendpwd" class="btn" /> </div>
+</ul>
+
+<ul id="fourth" style="display: none;">
+
+</ul>
+
+
+</div>
+</form>
+</div>
+</div>
+<script type="text/javascript" src = '__JS_PATH__/jQuery-1.11.3.min.js'></script>
+<script type="text/javascript">
+	var one = null;
+	var two = null;
+	var three = null;
+	$('#uname').blur(function(){
+		$.post("{:url('index/user/logset')}",{user:$(this).val()},function(data){
+				if(data.err){
+					$('#ckname').css('color','green');
+					$('#ckname').html(data.pwd);
+					one = true;
+				}else{
+					$('#ckname').css('color','red');
+					$('#ckname').html(data.pwd);
+					one = false;
+				}
+		},'json');
+	});
+
+	$('#checkcode').blur(function(){
+		$.post("{:url('index/user/code')}",{code:$(this).val()},function(data){
+				if(data.err){
+					$('#ckcode').css('color','green');
+					$('#ckcode').html(data.code);
+					two = true;
+				}else{
+					$('#ckcode').css('color','red');
+					$('#ckcode').html(data.code);
+					two = false;
+				}
+		},'json');
+	});
+
+	$('#btnfindpwd').click(function(){
+		if(one && two)
+		{
+			$('#two').addClass('successdl');
+			$('#two1').addClass('success');
+			$('#first').css('display','none');
+			$('#secend').css('display','block');
+		}
+	});
+
+	$('#uphone').blur(function(){
+		$.post("{:url('index/user/finpwd')}",{uname:$('#uname').val(),mobile:$(this).val()},function(data){
+				if(data.err){
+					$('#ckphone').css('color','green');
+					$('#ckphone').html(data.info);
+					one = true;
+				}else{
+					$('#ckphone').css('color','red');
+					$('#ckphone').html(data.info);
+					one = false;
+				}
+		},'json');
+	});
+
+	$('#sendcode').click(function(){
+		
+		$(this).css('display','none');
+		$('#subcode').css('display','block');
+		if(one){
+			$.post("../../code.php", {mobile:$('#uphone').val()}, function(res){
+					$('#yzm').val(res);
+				});
+		}
+	});
+
+	$('#phcode').blur(function(){
+		$.post("{:url('index/user/yzm')}",{smscode:$(this).val(),yzm:$('#yzm').val()},function(data){
+		if(data.err){
+			$('#phonecode').css('color','green');
+			$('#phonecode').html(data.info);
+			two = true;
+		}else{
+			$('#phonecode').css('color','red');
+			$('#phonecode').html(data.info);
+			two = false;
+		}
+	},'json');
+	});
+
+	$('#subcode').click(function(){
+		if(one && two)
+		{
+			$('#three').addClass('successdl');
+			$('#three1').addClass('success');
+			$('#secend').css('display','none');
+			$('#third').css('display','block');
+		}
+	});
+
+	$('#newpwd').blur(function(){
+		var chkpwd = /^[A-Za-z0-9]{6,20}$/;
+		if(chkpwd.test($(this).val()))
+		{
+			$('#ckpwd').css('color','green');
+			$('#ckpwd').html('密码合法');
+			one = true;
+		}else{
+			$('#ckpwd').css('color','red');
+			$('#ckpwd').html('密码非法');
+			one = false;
+		}
+	});
+
+	$('#repwd').blur(function(){
+		if($(this).val() == $('#newpwd').val())
+		{
+			$('#ckrepwd').css('color','green');
+			$('#ckrepwd').html('密码一致');
+			two = true;
+		}else{
+			$('#ckrepwd').css('color','red');
+			$('#ckrepwd').html('密码不一致');
+			two = false;
+		}
+	});
+
+	$('#sendpwd').click(function(){
+		if(one && two)
+		{
+			$.post("{:url('index/user/newpwd')}",{username:$('#uname').val(),password:$('#newpwd').val()},function(data){
+				if(data.err)
+				{
+					$('#fourth').addClass('successdl');
+					$('#fourth1').addClass('success');
+					$('#third').css('display','none');
+					$('#fourth').css('display','block');
+					window.location.href = 'repwd';
+				}else{
+					window.location.href = 'wrongrepwd';
+				}
+			},'json');
+		}
+	})
+</script>

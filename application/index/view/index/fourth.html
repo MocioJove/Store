@@ -1,0 +1,613 @@
+﻿<div class="navtitleright nb"><a href="{:url('index/index/index')}">首页</a> &gt; {if isset($class_first)}<a href="{:url('index/index/first')}?class_id={$class_first['class_id']}">{$class_first['classname']}</a>{/if} &gt; {if isset($classname_secend)}<a href="{:url('index/index/secend')}?class_id={$classname_secend['class_id']}">{$classname_secend['classname']}</a> {/if}&gt;{if isset($classname)} <a href="{:url('index/index/third')}?class_id={$classname['class_id']}">{$classname['classname']}</a>{/if}</div>
+<div class="indbody pro-style">
+    <div class="nb recom-box">
+        <div class="pro-view" id="ym-item">
+            <div class="pview-left">
+                <div class="ovclear">
+                    <div class="slide-fish">
+                        <div class="t2">
+                            <a href="upload/img/goods/20170330/3fb22e1d136f8384634d0189ef9cf2fd.jpg" id="bigimg" class="MagicZoom MagicThumb">
+                                  <img src="{$photo}" id="main_img" class="main_img" style="width:410px;height: 410px;" />
+                              </a>
+                        </div>
+                       <!--  <div class="small-scroll">
+                            <a class="prev" href="javascript:void(0);"></a>
+                            <a class="next" href="javascript:void(0);"></a>
+                            <div class="bd">
+                                <ul class="smallImg" id="imglist">
+                                    <li><a rel="bigimg" rev="upload/img/goods/20170330/3fb22e1d136f8384634d0189ef9cf2fd.jpg"><img src="__PICTURE_PATH__/3fb22e1d136f8384634d0189ef9cf2fd.jpg" /></a></li>
+                                </ul>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="fish-detail">
+                        <h3>{$name}</h3>
+                        <p></p>
+                        <div class="price">
+                            <!-- <div>市场价：
+                                <s>￥2599.00</s>
+                            </div> -->
+                            <div>价格：<span class="redbold">￥<b id="ym-price">{$price}</b></span></div>
+                        </div>
+                        <div class="deliver">
+                            {if $count > 0}
+                            <div>配送：<span><b>有货</b>
+                        {else}
+                            <div>配送：<span><b>缺货</b>
+                        {/if}
+                        <br>
+                        <a href="collect?goods_id={$goods_id}" style="float: left;margin-top: 10px;">加入收藏</a>
+                       
+                         <a href="javascript:void" style="display: none;">自提点</a>
+                        <div style="display: none;">
+                        <ul>
+                        <li value="24242">广东</li>
+                        <li value="24242">北京</li>
+                        </ul>
+                        <select>
+                        <option value="24242">佛山</option>
+                        <option value="24242">广州</option>
+                        </select>
+                        <ul>
+                        <li>某某223442424fwrw <span>15834442424</span></li>
+                                <li>某某223442424fwrw <span>15834442424</span></li>
+                                <li>某某223442424fwrw <span>15834442424</span></li>
+                                <li>某某223442424fwrw <span>15834442424</span></li>
+                                </ul>
+                            </div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="spec" id="goods-spec"></div>
+                    <div class="pro-number">
+                        <a class="subnum" href="javascript:void(0);">-</a>
+                        <input type="text" id="goods_num" class="result" data-max="10" value="1" maxlength="10" />
+                        <a class="addnum" href="javascript:void(0);">+</a>
+                    </div>
+                    <div class="cart-buy"> <a href="javascript:void(0);" class="buy-btn">立即购买</a>
+                        <a href="javascript:void(0);" id="cart-btn" class="cart-btn">加入购物车</a></div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="pview-right">
+            <h2>相关推荐</h2>
+            <div class="slider-protj">
+                <div class="bd">
+                    <ul>
+                        <li>
+                            <a href="znDvk-g.html" target="_blank"><img src="__PICTURE_PATH__/3fb22e1d136f8384634d0189ef9cf2fd_s_3.jpg" alt=""/></a>
+                            <p><a href="znDvk-g.html" target="_blank">小米5s Plus 全网通 高配版 6GB内存 128GB ROM 灰色 移动联通电信4G手机</a><span>￥2599.00</span></p>
+                        </li>
+                        <li>
+                            <a href="ZZWGH-g.html" target="_blank"><img src="__PICTURE_PATH__/a7406020e47e392c90c3281068b5065a_s_2.jpg" alt=""/></a>
+                            <p><a href="ZZWGH-g.html" target="_blank">小米 红米 4A 全网通 2GB内存 16GB ROM 香槟金色 移动联通电信4G手机 双卡双待</a><span>￥599.00</span></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hd">
+                    <a href="javascript:void(0);" class="prev"></a>
+                    <a href="javascript:void(0);" class="next"></a>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <div class="pro-tab">
+        <div class="slide-detail">
+            <div class="hdd">
+                <ul>
+                    <li class="good-detail on">商品详情</li>
+                    {if isset($grade_count)}
+                    <li class="good-evalate">客户评价<em>({$grade_count})</em></li>
+                    {else}
+                    <li class="good-evalate">客户评价<em>(0)</em></li>
+                    {/if}
+                    <li class="good-other">售后保障</li>
+                </ul>
+            </div>
+            <div class="bdd">
+                <div class="box1">
+                    <div class="box1detail">
+                        <div class="attr">
+                            <ul>
+                                <li>
+                                   {$editorValue}
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <br />
+                        <!-- <p><img src="__PICTURE_PATH__/e16aceb1bfba5a08f07a2e0eb55d5ebc.jpg" title="e16aceb1bfba5a08f07a2e0eb55d5ebc.jpg" alt="57ea2866N2ff8946c.jpg" /></p> -->
+                    </div>
+                    <div class="evalute">
+                        <h3 class="title">商品评价</h3> {if isset($grade_count)}
+                        <div class="percentgood">
+                            <div class="pgbox">
+                                <dl class="total">
+                                {if $count_good > 0}
+                                    <dt>{$count_good/$grade_count*100}%</dt>
+                                {else}
+                                    <dt>0%</dt>
+                                {/if}
+                                    <dd>好评度</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        {/if}
+                        <div class="tab-gbw">
+                            {if isset($grade_count)}
+                            <div class="hd">
+                                <ul class="evalute-titleul">
+                                    <li class="check" data-level="" data-page="1"><a href="javascript:all();">全部评价<em class="embold">({$grade_count})</em></a></li>
+                                    <li data-level="good" data-page="0"><a href="javascript:good();">好评<em>({$count_good})</em></a></li>
+                                    <li data-level="mid" data-page="0"><a href="javascript:mid();">中评<em>({$count_mid})</em></a></li>
+                                    <li data-level="bad" data-page="0"><a href="javascript:bad();">差评<em>({$count_bad})</em></a></li>
+                                </ul>
+                            </div>
+                            {/if}
+                            <div class="bd">
+                                <div class="evalute-detail" id="all">
+                                    {if isset($grade_count)} {if $grade_count
+                                    < 1} <ul>
+                                        <li style="text-align: center;">暂无评价~</li>
+                                        </ul>
+                                        {else} {foreach $comments as $value}
+                                        <div class="uc-panel">
+                                            <div class="uc-panel-bd">
+                                                <table class="evalute-table">
+                                                    <tr class="item">
+                                                        <td>
+                                                            <img src="{$value['photo']}" style="width: 50px;height: 50px;float: left;margin-left: -50px;">
+                                                            <div style="float: left;margin-left: -40px;margin-top: 52px;">{$value['username']}</div>
+                                                            {if $value['grade'] == 1}
+                                                            <div class="cont good">{$value['title']}</div>
+                                                            {elseif $value['grade'] == 2}
+                                                            <div class="cont">{$value['title']}</div>
+                                                            {elseif $value['grade'] == 3}
+                                                            <div class="cont bad">{$value['title']}</div>
+                                                            {/if}
+                                                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{$value['comments']}]</div>
+                                                        </td>
+                                                        <td>[{$value['time']}]</td>
+                                                    </tr>
+                                                    <tr class="item_good" style="display: none;">
+                                                    {if $value['grade'] == 1}
+                                                        <td>
+                                                            <img src="{$value['photo']}" style="width: 50px;height: 50px;float: left;margin-left: -50px;">
+                                                            <div style="float: left;margin-left: -40px;margin-top: 52px;">{$value['username']}</div>
+                                                            <div class="cont good">{$value['title']}</div>
+                                                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{$value['comments']}]</div>
+                                                        </td>
+                                                        <td>[{$value['time']}]</td>
+                                                    {/if}
+                                                    </tr>
+                                                    <tr class="item_mid" style="display: none;">
+                                                    {if $value['grade'] == 2}
+                                                        <td>
+                                                            <img src="{$value['photo']}" style="width: 50px;height: 50px;float: left;margin-left: -50px;">
+                                                            <div style="float: left;margin-left: -40px;margin-top: 52px;">{$value['username']}</div>
+                                                           
+                                                            <div class="cont">{$value['title']}</div>
+                                                           
+                                                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{$value['comments']}]</div>
+                                                        </td>
+                                                        <td>[{$value['time']}]</td>
+                                                    {/if}
+                                                    </tr>
+                                                    <tr class="item_bad" style="display: none;">
+                                                    {if $value['grade'] == 3}
+                                                        <td>
+                                                            <img src="{$value['photo']}" style="width: 50px;height: 50px;float: left;margin-left: -50px;">
+                                                            <div style="float: left;margin-left: -40px;margin-top: 52px;">{$value['username']}</div>
+                                                            <div class="cont bad">{$value['title']}</div>
+                                                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{$value['comments']}]</div>
+                                                        </td>
+                                                        <td>[{$value['time']}]</td>
+                                                    {/if}
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        {/foreach} {/if} {/if}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="title">售后保障</h3>
+                    <div class="otherbox">
+                        <ul class=" list-paddingleft-2" style="white-space: normal;">
+                            <li>
+                                <p><span class="goods" style="margin: 0px; padding: 0px 10px 0px 0px; display: inline-block; width: 32px; height: 32px; vertical-align: bottom; background-image: url(images/iconzp.png); background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: no-repeat;"></span>&nbsp;<strong style="margin: 0px; padding: 8px 0px 3px; display: inline-block;">厂家服务</strong></p>
+                            </li>
+                            <li>
+                                <p>本产品全国联保，享受三包服务，质保期为：一年质保（已激活的iPhone无质量问题不支持7天无理由退换货）
+                                    <br/>如因质量问题或故障，凭厂商维修中心或特约维修点的质量检测证明，享受7日内退货，15日内换货，15日以上在质保期内享受免费保修等三包服务！
+                                    <br/>(注:如厂家在商品介绍中有售后保障的说明,则此商品按照厂家说明执行售后保障服务。) 您可以查询本品牌在各地售后服务中心的联系方式，<a target="_blank" href="http://www.apple.com/cn/" style="margin: 0px; padding: 0px; color: rgb(0, 90, 160); text-decoration: none;">请点击这儿查询......</a>
+                                    <br/>
+                                    <br/>品牌官方网站：<a target="_blank" href="http://www.apple.com/cn/" style="margin: 0px; padding: 0px; color: rgb(0, 90, 160); text-decoration: none;">http://www.apple.com/cn/</a>
+                                    <br/>售后服务电话：400-666-8800</p>
+                            </li>
+                            <li>
+                                <p><strong style="margin: 0px; padding: 8px 0px 3px; display: inline-block;">承诺</strong></p>
+                            </li>
+                            <li>
+                                <p>平台卖家销售并发货的商品，由平台卖家提供发票和相应的售后服务。请您放心购买！
+                                    <br/>注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！</p>
+                            </li>
+                            <li>
+                                <p><span class="goods" style="margin: 0px; padding: 0px 10px 0px 0px; display: inline-block; width: 32px; height: 32px; vertical-align: bottom; background-image: url(images/iconzp.png); background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: no-repeat;"></span><strong style="margin: 0px; padding: 8px 0px 3px; display: inline-block;">正品行货</strong></p>
+                            </li>
+                            <li>
+                                <p>商城向您保证所售商品均为正品行货，京东自营商品开具机打发票或电子发票。</p>
+                            </li>
+                            <li>
+                                <p><span class="unprofor" style="margin: 0px; padding: 0px 10px 0px 0px; display: inline-block; width: 32px; height: 32px; vertical-align: bottom; background-image: url(images/iconlb.png); background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: no-repeat;"></span><strong style="margin: 0px; padding: 8px 0px 3px; display: inline-block;">全国联保</strong></p>
+                            </li>
+                            <li>
+                                <p>凭质保证书及商城发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由京东联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。商城还为您提供具有竞争力的商品价格和<a href="https://help.jd.com/help/question-892.html" target="_blank" style="margin: 0px; padding: 0px; color: rgb(0, 90, 160); text-decoration: none;">运费政策</a>，请您放心购买！&nbsp;
+                                    <br/>
+                                    <br/>注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！</p>
+                            </li>
+                            <li>
+                                <p>
+                                    <br/>
+                                </p>
+                            </li>
+                        </ul>
+                        <p>
+                            <br/>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<input type="hidden" id="goods_id" value="119" />
+<input type="hidden" id="user_discount" value="" />
+<p style="display: none;"></p>
+<div class="celan-float">
+    <ul>
+        <li class="shop"><a href="/cart.html" title="购物车"></a></li>
+        <li class="coll"><a href="#">收藏夹</a></li>
+        <li class="ecode">
+            <a href="#">二维码</a>
+            <div class="ecode-box radius">
+                <img src="__PICTURE_PATH__/code_6.jpg" alt="" />
+            </div>
+        </li>
+        <li class="gossi"><a href="/chat.html" target="_blank">微信</a></li>
+        <li class="telnum">
+            <a href="#">电话号码</a>
+            <div class="tel-box radius"><span>0757-82917115</span></div>
+        </li>
+    </ul>
+</div>
+<link rel="stylesheet" href="css/magiczoom.css" />
+<script src="__JS_PATH__/jquery-1.9.1.min_9.js" type="text/javascript"></script>
+<script src="__JS_PATH__/jQuery-1.11.3.min.js" type="text/javascript"></script>
+<script src="js/location.js" type="text/javascript"></script>
+<script src="__JS_PATH__/magiczoom.js" type="text/javascript"></script>
+<script src="__JS_PATH__/jquery.superslide.2.1.1_3.js" type="text/javascript"></script>
+<script src="__JS_PATH__/main_9.js" type="text/javascript"></script>
+<script type="text/javascript">
+$('.subnum').click(function() {
+    if (parseInt($('#goods_num').val()) > 1) {
+        $('#goods_num').val(parseInt($('#goods_num').val()) - 1);
+
+    }
+})
+$('.addnum').click(function() {
+    if (parseInt($('#goods_num').val()) < 10) {
+        $('#goods_num').val(parseInt($('#goods_num').val()) + 1);
+    }
+})
+
+$('#cart-btn').click(function() {
+
+    var link = window.location.search;
+    var goods_id = link.substring(link.lastIndexOf('=') + 1, link.length);
+    $.post("{:url('index/goods/cart')}", { goods_id: goods_id, goods_num: $('#goods_num').val() }, function(data) {
+        if (data.err) {
+            alert(data.info);
+            // $('.cartinfo').html(data.num);
+        } else {
+            alert(data.info);
+        }
+    }, 'json');
+})
+$('.buy-btn').click(function() {
+    var link = window.location.search;
+    var goods_id = link.substring(link.lastIndexOf('=') + 1, link.length);
+    $.post("{:url('index/goods/buy')}", { goods_id: goods_id, goods_num: $('#goods_num').val() }, function(data) {
+        if (data.err) {
+            window.location.href = 'cart';
+        } else {
+            alert(data.info);
+        }
+    }, 'json');
+})
+$(function() {
+    $("#goods-spec .it a").each(function() {
+        $(this).click(function() {
+            if ($(this).data("img") != '') {
+                var imgs = $(this).data("img");
+                var html = '';
+                $.each(imgs, function(k, v) {
+                    html += '<li><a rel="bigimg" rev="' + v.img + '"><img src="' + v.thumb + '"></a></li>';
+                })
+                $("#imglist").html(html);
+                $(".slide-fish ul.smallImg").children("li").eq(0).find("img").trigger("mouseover");
+            }
+        });
+    });
+})
+
+var goods_id = $("#goods_id").val();
+var time = 0;
+//回复
+function reply(th) {
+    if (time != 0) {
+        msg("请别回复太快哦");
+        return;
+    }
+    var t = $(th),
+        txt = t.parent().siblings().children(".textpj");
+    var reply = txt.attr("placeholder"),
+        content = $.trim(txt.val()),
+        pid = t.data("pid"),
+        ptype = t.data("ptype"),
+        cid = t.parents("li").attr("id");
+
+    if (content == '') {
+        msg('请输入回复内容');
+        return;
+    }
+
+    $.getJSON("/user.html", { act: 'add_comment_reply', gid: goods_id, pid: pid, ptype: ptype, content: content, cid: cid }, function(res) {
+        if (res.err && res.err != '') {
+            msg('操作失败，' + res.err);
+            return;
+        }
+        if (res.url && res.url != '') {
+            window.location.href = res.url;
+            return;
+        } else {
+            var html = '<div class="receive"><p><span class="user-name"> ' + reply + '：</span>' + content + '</p></div>';
+            if (ptype == 1) {
+                t.parents(".replylist").append(html);
+            } else {
+                t.parents(".receivebox").siblings(".replylist").append(html);
+            }
+            t.parents(".receivebox").hide().find(".textpj").val('');
+            var n = t.parents(".personeva").children().children("a").children("em");
+            n.html(parseInt(n.html()) + 1);
+            time = 60;
+            var ti = setInterval(function() {
+                if (time == 0) {
+                    clearInterval(i);
+                    return;
+                }
+                time--;
+            }, 1000);
+        }
+    });
+};
+
+$(".ul-pro-box li").each(function() {
+    if ($(this).index() % 4 == 3) {
+        $(this).css("margin-right", "4px");
+    }
+    if ($(this).index() % 4 == 0) {
+        $(this).css("margin-left", "4px");
+    }
+});
+
+//获取回复
+function get_reply(t) {
+    if ($(t).siblings(".replylist").hasClass("loaded") == false) {
+        var cid = $(t).parents("li").attr("id");
+        $.getJSON("/user.html", { act: 'get_comment_reply', cid: cid }, function(res) {
+            if (res.err && res.err != '') {} else {
+                var html = '';
+                $.each(res.data, function(k, v) {
+                    html += '<div class="receive"><div class="content"><span class="user-name">' + v.uname + ' 回复 ' + v.reply_name + '：</span><span>' + v.content + '</span><p><a href="javascript:void(0);" onclick="javascript:show_replybox(this);" class="receivea">回复</a></p></div><span style="float:right;">' + v.addtime + '</span>';
+                    html += '';
+                    html += '<div class="receivebox"><div class="inner"><textarea placeholder="回复 ' + v.uname + ':" class="textpj" onkeyup="words_deal(this);" maxlength="120"></textarea></div>';
+                    html += '<p> <span>还可以输入<em>120</em>字</span> <input type="submit" data-pid="' + v.id + '" data-ptype="1" value="提交" class="submita" onclick="javascript:reply(this);"/> </p></div></div>';
+                    html += '</div>';
+                });
+                $(t).siblings(".replylist").append(html).addClass("loaded");
+            }
+        });
+    }
+    show_replybox(t);
+};
+
+//显示回复框
+function show_replybox(th) {
+    var t = $(th);
+    t.siblings(".receivebox,.replylist").toggle();
+    t.parents(".content").siblings(".receivebox").toggle();
+    t.toggleClass("showvisi");
+}
+
+//
+$(".evalute-titleul li").each(function() {
+    var t = $(this);
+    t.click(function() {
+        t.addClass("check").siblings().removeClass("check");
+        t.find("em").addClass("embold").siblings().removeClass("embold");
+        var level = t.data("level"),
+            page = t.data("page");
+
+        //加载评价数据
+        if (t.hasClass("loaded") == false) {
+            loadComment(t, level, page);
+        }
+    });
+});
+
+//加载更多评价
+$(".loadmore").click(function() {
+    var t = $(".evalute-titleul").children().eq($(this).parents(".evalute-detail").index());
+    var level = t.data("level"),
+        page = t.data("page");
+    loadComment(t, level, page);
+});
+
+function loadComment(t, level, page) {
+    $("#" + (level == '' ? 'all' : level)).children(".loading").show();
+    $.getJSON("/user.html", { act: 'get_comment', id: goods_id, level: level, page: page }, function(res) {
+        if (res.err && res.err != '') {
+
+        } else {
+            var html = '';
+            $.each(res.data, function(k, v) {
+                html += '<li id="' + v.id + '"><div class="column starevalute">';
+                html += '<div class="column rankevalute"><div class="member"><img src="' + (v.uimg != '' ? v.uimg : './view/default/images/login_head.png') + '" alt="" /></div>';
+                //html +='<span class="red">'+ v.grade_name +'</span>'; 
+                html += '<div class="menber-rank"><span>' + v.anon_name + '</span></div></div>';
+                html += '<div class="grade-stars grade' + v.star + '"></div><p> ' + v.addtime + ' </p></div>';
+                html += '<div class="column personeva"><div class="comment">' + v.content;
+                if (v.thumb && v.thumb.length > 0) {
+                    html += '<div class="show-pic"><dl>';
+                    $.each(v.thumb, function(key, val) {
+                        html += '<dd><a data-src="' + v.img[key] + '"><img src="' + val + '" width="80" height="80"/></a></dd>';
+                    });
+                    html += '</dl></div><div class="sc_picbox"><div class="sc_pictab"><a href="javascript:void(0);" class="a_up"><em class="icon-up"></em>收起</a><a href="javascript:void(0);" class="a_left"><em class="round-left"></em>向左旋转</a><a href="javascript:void(0);" class="a_right"><em class="round-right"></em>向右旋转</a></div><div class="sc_photo"><img src="' + v.img[0] + '" alt="" class="dyimg_src"/></div></div>';
+                }
+                html += '</div><div class="receive"><a href="javascript:void(0);" onclick="javascript:get_reply(this);" class="receivea showvisi">回复(<em>' + v.reply_count + '</em>)</a>';
+                html += '<div class="receivebox">';
+                html += '<div class="inner"><textarea placeholder="回复 ' + v.anon_name + ':" class="textpj" onkeyup="words_deal(this);" maxlength="120"></textarea></div>';
+                html += '<p> <span>还可以输入<em>120</em>字</span> <input type="submit" data-pid="' + v.id + '" data-ptype="0" value="提交" class="submita" onclick="javascript:reply(this);" /> </p></div>';
+                html += '<div class="replylist"></div></div></div></li>';
+            });
+
+            level = level == '' ? 'all' : level;
+            $("#" + level).children("ul").append(html);
+            t.data("page", page + 1);
+            if (t.hasClass("loaded") == false) {
+                t.addClass("loaded");
+            }
+            if (res.data.length == 0 || (res.res && res.res == 1)) {
+                $("#" + level).children(".pages").html("没有更多评价了~");
+            }
+            inti_showpic();
+        }
+        $("#" + level).children(".loading").hide();
+    });
+}
+
+$(".tab-gbw").slide({ trigger: "click" });
+$(".slide-detail .hdd li").each(function() {
+    $(this).click(function() {
+        $(this).addClass("on").siblings().removeClass("on");
+        if ($(this).index() == 0) {
+            $(".box1detail,.otherbox,.evalute,.box1 h3.title").show();
+        } else if ($(this).index() == 1) {
+            $(".box1detail,.otherbox").hide();
+            $(".evalute").show();
+            $(".box1 h3.title").hide();
+        } else {
+            $(".box1detail,.evalute").hide();
+            $(".otherbox").show();
+            $(".box1 h3.title").hide();
+        }
+    });
+});
+
+$(".pps li:last-child").css("border-bottom", "none");
+$(document).ready(function() {
+    loadLayer();
+
+    $(".slide-fish").slide({ titCell: ".smallImg li", mainCell: ".bigImg", effect: "left", autoPlay: false, delayTime: 200 });
+    $(".slide-fish .small-scroll").slide({ mainCell: "ul.smallImg", effect: "left", autoPlay: false, autoPage: true, vis: 5, delayTime: 100 });
+    $(".slide-fish ul.smallImg").on("mouseover", "li img", function() {
+        $(this).parents("li").css("border-color", "#de342f").siblings().css({ "border-color": "#fff" });
+        var s = $(this).parents(".small-scroll").siblings(".t2").children();
+        s.children(".main_img").prop("src", $(this).parent().prop("rev"));
+        s.children(".MagicZoomBigImageCont").find("img").prop("src", $(this).parent().prop("rev"));
+    });
+});
+$(".slider-protj").slide({ titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "top", autoPlay: false, vis: 2 });
+$(window).scroll(function() {
+    var topproview = $(".pro-view").outerHeight() + $(".header").height();
+    if ($(window).scrollTop() > topproview) {
+        $(".pro-tab .hdd").addClass("hdfix");
+    } else {
+        $(".pro-tab .hdd").removeClass("hdfix");
+    }
+});
+</script>
+<!--晒单图片-->
+<script type="text/javascript">
+$(".show-pic").slide({ mainCell: ".sc_bd dl", autoPage: true, effect: "left", autoPlay: false, vis: 5, prevCell: ".sc_prev", nextCell: ".sc_next" });
+
+function inti_showpic() {
+    $(".evalute-detail li").each(function() {
+        $(this).find(".show-pic dd a").click(function() {
+            d = 0;
+            var img_src = $(this).attr("data-src");
+            var showpic = $(this).parents(".show-pic").siblings(".sc_picbox");
+            showpic.find(".dyimg_src").attr("src", img_src).css("transform", "rotateZ(0deg)");
+            $(this).addClass("on").parent().siblings().children().removeClass("on");
+            showpic.show().parents("li").siblings("li").children(".sc_picbox").hide();
+        });
+    });
+
+    $(".a_left").click(function() {
+        move(-90, $(this));
+    });
+    $(".a_right").click(function() {
+        move(90, $(this));
+    });
+    $(".sc_photo,.a_up").click(function() {
+        $(".sc_picbox").hide();
+        $(".show-pic dd a").removeClass("on");
+    });
+}
+
+$(function() {
+    inti_showpic();
+})
+
+var d = 0;
+
+function move(s, t) {
+    d += s;
+    t.parent().siblings().children(".dyimg_src").css("transform", "rotateZ(" + d + "deg)");
+}
+
+function all()
+{
+    $('.item').css('display','block');
+    $('.item_good').css('display','none');
+    $('.item_mid').css('display','none');
+    $('.item_bad').css('display','none');
+}
+function good()
+{
+    $('.item').css('display','none');
+    $('.item_good').css('display','block');
+    $('.item_mid').css('display','none');
+    $('.item_bad').css('display','none');
+}
+function mid()
+{
+    $('.item').css('display','none');
+    $('.item_good').css('display','none');
+    $('.item_mid').css('display','block');
+    $('.item_bad').css('display','none');
+}
+function bad()
+{
+    $('.item').css('display','none');
+    $('.item_good').css('display','none');
+    $('.item_mid').css('display','none');
+    $('.item_bad').css('display','block');
+}
+</script>
+</body>
+
+</html>
